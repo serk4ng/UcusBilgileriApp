@@ -1,0 +1,69 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29324.140
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UcusBilgileriApp", "UcusBilgileriApp\UcusBilgileriApp.csproj", "{51D97513-0946-4B94-B117-D87C5373A03C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp2", "..\WindowsFormsApp2\WindowsFormsApp2\WindowsFormsApp2.csproj", "{7F8E4CB9-9A5F-471B-BC34-55939F5F5C64}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UcusBilgileriApp.BLL", "UcusBilgileriApp.BLL\UcusBilgileriApp.BLL.csproj", "{38135107-491C-4F03-A43D-0534761E82C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UcusBilgileriApp.MODELS", "UcusBilgileriApp.MODELS\UcusBilgileriApp.MODELS.csproj", "{9F181F5C-7ADD-4998-B972-BEDAB48B4F0C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6F28D834-8C4C-47F2-9F52-5DB8CBA71198}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gazi.Sube1.OkulApp.BLL", "..\..\..\Desktop\Gazi.KazanMyo.Sube1.OkulApp-master\Gazi.KazanMyo.Sube1.OkulApp-master\Gazi.Sube1.OkulApp.BLL\Gazi.Sube1.OkulApp.BLL.csproj", "{8972C38C-B63F-48E7-819D-321B66F991D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gazi.Sube1.OkulApp.MODELS", "..\..\..\Desktop\Gazi.KazanMyo.Sube1.OkulApp-master\Gazi.KazanMyo.Sube1.OkulApp-master\Gazi.Sube1.OkulApp.MODELS\Gazi.Sube1.OkulApp.MODELS.csproj", "{04386DC8-D837-4077-A809-6E6E69D64294}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gazi.Sube1.DAL", "..\..\..\Desktop\Gazi.KazanMyo.Sube1.OkulApp-master\Gazi.KazanMyo.Sube1.OkulApp-master\Gazi.Sube1.DAL\Gazi.Sube1.DAL.csproj", "{645A5E96-467A-428A-A298-FD0DCE85028D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gazi.KazanMyo.Sube1.OkulApp", "..\..\..\Desktop\Gazi.KazanMyo.Sube1.OkulApp-master\Gazi.KazanMyo.Sube1.OkulApp-master\Gazi.KazanMyo.Sube1.OkulApp\Gazi.KazanMyo.Sube1.OkulApp.csproj", "{EB5AC093-68A9-4910-B853-49ED756CD862}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{51D97513-0946-4B94-B117-D87C5373A03C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51D97513-0946-4B94-B117-D87C5373A03C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51D97513-0946-4B94-B117-D87C5373A03C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51D97513-0946-4B94-B117-D87C5373A03C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F8E4CB9-9A5F-471B-BC34-55939F5F5C64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F8E4CB9-9A5F-471B-BC34-55939F5F5C64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F8E4CB9-9A5F-471B-BC34-55939F5F5C64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F8E4CB9-9A5F-471B-BC34-55939F5F5C64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38135107-491C-4F03-A43D-0534761E82C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38135107-491C-4F03-A43D-0534761E82C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38135107-491C-4F03-A43D-0534761E82C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38135107-491C-4F03-A43D-0534761E82C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F181F5C-7ADD-4998-B972-BEDAB48B4F0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F181F5C-7ADD-4998-B972-BEDAB48B4F0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F181F5C-7ADD-4998-B972-BEDAB48B4F0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F181F5C-7ADD-4998-B972-BEDAB48B4F0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8972C38C-B63F-48E7-819D-321B66F991D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8972C38C-B63F-48E7-819D-321B66F991D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8972C38C-B63F-48E7-819D-321B66F991D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8972C38C-B63F-48E7-819D-321B66F991D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04386DC8-D837-4077-A809-6E6E69D64294}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04386DC8-D837-4077-A809-6E6E69D64294}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04386DC8-D837-4077-A809-6E6E69D64294}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04386DC8-D837-4077-A809-6E6E69D64294}.Release|Any CPU.Build.0 = Release|Any CPU
+		{645A5E96-467A-428A-A298-FD0DCE85028D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{645A5E96-467A-428A-A298-FD0DCE85028D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{645A5E96-467A-428A-A298-FD0DCE85028D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{645A5E96-467A-428A-A298-FD0DCE85028D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB5AC093-68A9-4910-B853-49ED756CD862}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB5AC093-68A9-4910-B853-49ED756CD862}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB5AC093-68A9-4910-B853-49ED756CD862}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB5AC093-68A9-4910-B853-49ED756CD862}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6D923B1A-5607-429F-9DEE-F918EAB51BA4}
+	EndGlobalSection
+EndGlobal
