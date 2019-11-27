@@ -152,6 +152,7 @@ namespace UcusBilgileriApp
             cmbUcak.SelectedIndex = 0;
             btnVazgec.Visible = false;
             btnSil.Visible = false;
+            txtUcusNumara.Enabled = true;
 
         }
 
