@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.txtUcusNumara = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblUcusNo = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -69,15 +69,15 @@
             this.txtUcusNumara.Size = new System.Drawing.Size(100, 20);
             this.txtUcusNumara.TabIndex = 1;
             // 
-            // label1
+            // lblUcusNo
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(57, 71);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 13);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Uçuş Numarası :";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.lblUcusNo.AutoSize = true;
+            this.lblUcusNo.Location = new System.Drawing.Point(57, 71);
+            this.lblUcusNo.Name = "lblUcusNo";
+            this.lblUcusNo.Size = new System.Drawing.Size(85, 13);
+            this.lblUcusNo.TabIndex = 6;
+            this.lblUcusNo.Text = "Uçuş Numarası :";
+            this.lblUcusNo.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -186,6 +186,7 @@
             // 
             // btnKaydet
             // 
+            this.btnKaydet.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnKaydet.Image = ((System.Drawing.Image)(resources.GetObject("btnKaydet.Image")));
             this.btnKaydet.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnKaydet.Location = new System.Drawing.Point(119, 328);
@@ -245,6 +246,7 @@
             // 
             // btnBul
             // 
+            this.btnBul.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBul.Location = new System.Drawing.Point(119, 371);
             this.btnBul.Name = "btnBul";
             this.btnBul.Size = new System.Drawing.Size(171, 44);
@@ -255,6 +257,7 @@
             // 
             // btnVazgec
             // 
+            this.btnVazgec.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnVazgec.Location = new System.Drawing.Point(324, 328);
             this.btnVazgec.Name = "btnVazgec";
             this.btnVazgec.Size = new System.Drawing.Size(110, 37);
@@ -267,6 +270,7 @@
             // btnSil
             // 
             this.btnSil.BackColor = System.Drawing.Color.Red;
+            this.btnSil.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSil.Font = new System.Drawing.Font("Freehand521 BT", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnSil.Location = new System.Drawing.Point(324, 382);
             this.btnSil.Name = "btnSil";
@@ -279,6 +283,7 @@
             // 
             // pnlUcusNo
             // 
+            this.pnlUcusNo.BackColor = System.Drawing.Color.Transparent;
             this.pnlUcusNo.Controls.Add(this.txtUcusNumara);
             this.pnlUcusNo.Location = new System.Drawing.Point(141, 62);
             this.pnlUcusNo.Name = "pnlUcusNo";
@@ -287,6 +292,7 @@
             // 
             // pnlSaat
             // 
+            this.pnlSaat.BackColor = System.Drawing.Color.Transparent;
             this.pnlSaat.Controls.Add(this.txtVarisSaat);
             this.pnlSaat.Controls.Add(this.txtTahminiSure);
             this.pnlSaat.Location = new System.Drawing.Point(143, 250);
@@ -297,6 +303,8 @@
             // label11
             // 
             this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.SystemColors.Control;
+            this.label11.Cursor = System.Windows.Forms.Cursors.Default;
             this.label11.Font = new System.Drawing.Font("Lucida Sans", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(249, 201);
             this.label11.Name = "label11";
@@ -356,8 +364,10 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblUcusNo);
+            this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Name = "Form1";
+            this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Text = "Uçuş Bilgileri";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.pnlUcusNo.ResumeLayout(false);
@@ -370,7 +380,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -399,6 +408,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
+        public System.Windows.Forms.Label lblUcusNo;
     }
 }
 

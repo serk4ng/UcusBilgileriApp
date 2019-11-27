@@ -53,6 +53,7 @@ namespace UcusBilgileriApp
 
                 frm.btnVazgec.Visible = true;
                 frm.btnSil.Visible = true;
+                frm.lblUcusNo.Cursor = Cursors.No;
                 frm.txtUcusNumara.Enabled = false;
                 frm.btnKaydet.Text = "Guncelle";
 

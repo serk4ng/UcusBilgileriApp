@@ -143,7 +143,7 @@ namespace UcusBilgileriApp
             {
                 item.Text = string.Empty;
             }
-
+            txtKalkisSaat.Text = string.Empty;
             btnKaydet.Text = "Ekle";
             ucus_numarasi = null;
             cmbHavayolu.SelectedIndex = 0;
@@ -153,6 +153,7 @@ namespace UcusBilgileriApp
             btnVazgec.Visible = false;
             btnSil.Visible = false;
             txtUcusNumara.Enabled = true;
+            lblUcusNo.Cursor = Cursors.Default;
 
         }
 
@@ -229,6 +230,8 @@ namespace UcusBilgileriApp
         {
             Temizle();
         }
+
+    
     }
     
 
