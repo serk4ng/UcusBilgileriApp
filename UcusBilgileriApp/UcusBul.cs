@@ -32,7 +32,7 @@ namespace UcusBilgileriApp
 
             UcusBL ubl = new UcusBL();
             Ucus u = ubl.UcusBul(txtUcusNo.Text.Trim());
-    
+
             if (u == null)
             {
                 MessageBox.Show("Uçuş Bulunamadı");
@@ -40,18 +40,25 @@ namespace UcusBilgileriApp
             else
             {
                 frm.txtUcusNumara.Text = u.Ucus_Numarasi;
-                frm.cmbHavayolu.Text = u.Id_Havayolu;
-                frm.cmbKalkis.Text = u.Kalkis_Yeri_Id;
-                frm.cmbVaris.Text = u.Varis_Yeri_Id;
-                frm.txtKalkisTarih.Text = u.Kalkis_Tarih.ToString();
+                frm.cmbHavayolu.SelectedValue = u.Id_Havayolu;
+                frm.cmbKalkis.SelectedValue = u.Kalkis_Yeri_Id;
+                frm.cmbVaris.SelectedValue = u.Varis_Yeri_Id;
+                frm.txtKalkisTarih.Value = u.Kalkis_Tarih;
                 frm.txtKalkisSaat.Text = u.Kalkis_Saat.ToString();
-                frm.cmbVaris.Text = u.Varis_Tarih.ToString();
+                frm.txtVarisTarih.Value = u.Varis_Tarih;
                 frm.txtVarisSaat.Text = u.Varis_Saat.ToString();
                 frm.txtTahminiSure.Text = u.Tahmini_Sure.ToString();
-                frm.cmbUcak.Text = u.Id_Ucak;
-                frm.ucus_Numarasi = u.Ucus_Numarasi;
+                frm.cmbUcak.SelectedValue = u.Id_Ucak;
+                frm.ucus_numarasi = frm.txtUcusNumara.Text;
+
+                frm.btnVazgec.Visible = true;
+                frm.btnSil.Visible = true;
+                frm.txtUcusNumara.Enabled = false;
+                frm.btnKaydet.Text = "Guncelle";
 
             }
+
+
         }
     }
 }

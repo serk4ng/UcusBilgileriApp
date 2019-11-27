@@ -21,6 +21,7 @@ namespace UcusBilgileriApp.BLL
             {
                 lst.Add(new Havaalani { Id_Yer = dr["Id_Yer"].ToString(), Yer_Adi = dr["Yer_Adi"].ToString() });
             }
+            lst.Insert(0, new Havaalani { Yer_Adi = "Havaalanı Seçiniz" });
             dr.Close();
             return lst;
         }

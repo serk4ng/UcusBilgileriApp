@@ -9,7 +9,7 @@ namespace UcusBilgileriApp
     public partial class Form1 : Form
     {
         SqlConnection cn = null;
-        public string ucus_Numarasi =null;
+        public string ucus_numarasi =null;
         public Form1()
         {
 
@@ -19,9 +19,9 @@ namespace UcusBilgileriApp
             //cmbKalkis.Items.Add("DE1");
 
             txtKalkisTarih.Format = DateTimePickerFormat.Custom;
-            txtKalkisTarih.CustomFormat = "d/M/yyyy";
+            txtKalkisTarih.CustomFormat = "yyyy-M-d";
             txtVarisTarih.Format = DateTimePickerFormat.Custom;
-            txtVarisTarih.CustomFormat = "d/M/yyyy";
+            txtVarisTarih.CustomFormat = "yyyy-M-d";
 
 
 
@@ -34,7 +34,31 @@ namespace UcusBilgileriApp
 
         public void btnKaydet_Click(object sender, EventArgs e)
         {
-           
+            if (cmbHavayolu.SelectedIndex == 0)
+            {
+                MessageBox.Show("Havayolu Seçiniz");
+                cmbHavayolu.DroppedDown = true;
+                return;
+            }
+            else if(cmbKalkis.SelectedIndex == 0)
+            {
+                MessageBox.Show("Havaalanı Seçiniz");
+                cmbKalkis.DroppedDown = true;
+                return;
+            }
+            else if (cmbVaris.SelectedIndex == 0)
+            {
+                MessageBox.Show("Havaalanı Seçiniz");
+                cmbVaris.DroppedDown = true;
+                return;
+            }
+            else if (cmbUcak.SelectedIndex == 0)
+            {
+                MessageBox.Show("Uçak Seçiniz");
+                cmbUcak.DroppedDown = true;
+                return;
+            }
+
             try
             {
 
@@ -48,7 +72,8 @@ namespace UcusBilgileriApp
                 UcusBL u = new UcusBL();
                 Ucus ucsK = new Ucus();
 
-                ucsK.Ucus_Numarasi = txtUcusNumara.Text.Trim();
+                ucsK.Ucus_Numarasi = txtUcusNumara.Text.Trim(); 
+                //ucsK.Ucus_Numarasi = ucus_numarasi;
                 ucsK.Id_Havayolu = cmbHavayolu.SelectedValue.ToString();
                 ucsK.Kalkis_Yeri_Id = cmbKalkis.SelectedValue.ToString();
                 ucsK.Varis_Yeri_Id = cmbVaris.SelectedValue.ToString();
@@ -58,20 +83,30 @@ namespace UcusBilgileriApp
                 ucsK.Varis_Saat = time2;
                 ucsK.Tahmini_Sure = time3;
                 ucsK.Id_Ucak = cmbUcak.SelectedValue.ToString();
-               
-                
-                MessageBox.Show(u.Kaydet(ucsK) ? "Başarılı" : "Başarısız");
 
-                //if (u.Guncelle(ucsK))
-                //{
-                //    MessageBox.Show("Güncelleme Başarılı");
-                //}
-                //else
-                //{
-                //    MessageBox.Show("Güncelleme Başarısız");
-                //}
-             
-                // txtKalkisCombo.Items.AddRange("@Kalkis_Yeri_Id", ucs.Kalkis_Yeri_Id);
+
+                if (ucus_numarasi==null)
+                {
+                    MessageBox.Show(u.Kaydet(ucsK) ? "Başarılı" : "Başarısız");
+                }
+                else
+                {
+                    
+                    if (u.Guncelle(ucsK))
+                    {
+                        ucus_numarasi = null;
+                        Temizle();
+                        MessageBox.Show("Güncelleme Başarılı");
+
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Güncelleme Başarısız!");
+                    }
+                }
+                
+
             }
 
             catch (SqlException ex)
@@ -96,6 +131,28 @@ namespace UcusBilgileriApp
                 MessageBox.Show("Bilinmeyen Hata!!");
             }
           
+        }
+
+        void Temizle()
+        {
+            foreach (Control item in this.Controls["pnlUcusNo"].Controls)
+            {
+                item.Text = string.Empty;
+            }
+            foreach (Control item in this.Controls["pnlSaat"].Controls)
+            {
+                item.Text = string.Empty;
+            }
+
+            btnKaydet.Text = "Ekle";
+            ucus_numarasi = null;
+            cmbHavayolu.SelectedIndex = 0;
+            cmbKalkis.SelectedIndex = 0;
+            cmbVaris.SelectedIndex = 0;
+            cmbUcak.SelectedIndex = 0;
+            btnVazgec.Visible = false;
+            btnSil.Visible = false;
+
         }
 
         public void Form1_Load(object sender, EventArgs e)
@@ -126,8 +183,51 @@ namespace UcusBilgileriApp
             ucs.Show();
         }
 
-       
-        
+        private void btnSil_Click(object sender, EventArgs e)
+        {
+            DialogResult cvp = MessageBox.Show("Kayıt Silinecek. Eminminisiniz?", "Silme Onayı", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+
+            if (cvp == DialogResult.Yes)
+            {
+                UcusBL ubl = new UcusBL();
+                if (ubl.UcusSil(ucus_numarasi))
+                {
+                    MessageBox.Show("Silme Başarılı!");
+                    Temizle();
+                }
+                else
+                {
+                    MessageBox.Show("Silme hatalı!");
+                }
+                ubl.Dispose();
+            }
+            else
+            {
+                MessageBox.Show("İşlem İptal Edildi!");
+                Temizle();
+
+            }
+        }
+
+        private void Saat_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int a = (int)e.KeyChar;
+           
+            if ((a >=48 && a <= 58)|| a == 8 )
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void btnVazgec_Click(object sender, EventArgs e)
+        {
+            Temizle();
+        }
     }
     
 

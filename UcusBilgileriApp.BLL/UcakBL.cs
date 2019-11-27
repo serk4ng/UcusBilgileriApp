@@ -21,6 +21,7 @@ namespace UcusBilgileriApp.BLL
             {
                 lst.Add(new Ucak { Id_Ucak = dr["Id_Ucak"].ToString(), Ucak_Adi = dr["Ucak_Adi"].ToString(), Yolcu_Sayisi = Convert.ToInt32(dr["Yolcu_Sayisi"]) });
             }
+            lst.Insert(0, new Ucak { Ucak_Adi = "Uçak Seçiniz" });
             dr.Close();
             return lst;
         }

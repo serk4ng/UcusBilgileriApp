@@ -21,6 +21,7 @@ namespace UcusBilgileriApp.BLL
             {
                 lst.Add(new Havayolu { Id_Havayolu = dr["Id_Havayolu"].ToString(), Havayolu_Adi = dr["Havayolu_Adi"].ToString() });
             }
+            lst.Insert(0, new Havayolu { Havayolu_Adi = "Havayolu Seçiniz" });
             dr.Close();
             return lst;
         }

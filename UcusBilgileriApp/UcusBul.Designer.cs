@@ -75,9 +75,8 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txtUcusNo;
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.Button btnBul;
+        public System.Windows.Forms.TextBox txtUcusNo;
     }
 }
