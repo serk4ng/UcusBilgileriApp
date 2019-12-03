@@ -9,21 +9,16 @@ namespace UcusBilgileriApp
     public partial class Form1 : Form
     {
         SqlConnection cn = null;
-        public string ucus_numarasi =null;
+        public string ucus_numarasi = null;
         public Form1()
         {
 
             InitializeComponent();
 
-            //cmbKalkis.Items.Add("TR1");
-            //cmbKalkis.Items.Add("DE1");
-
             txtKalkisTarih.Format = DateTimePickerFormat.Custom;
             txtKalkisTarih.CustomFormat = "yyyy-M-d";
             txtVarisTarih.Format = DateTimePickerFormat.Custom;
             txtVarisTarih.CustomFormat = "yyyy-M-d";
-
-
 
         }
 
@@ -34,34 +29,13 @@ namespace UcusBilgileriApp
 
         public void btnKaydet_Click(object sender, EventArgs e)
         {
-            if (cmbHavayolu.SelectedIndex == 0)
+            if (SecenekKontrol() == false)
             {
-                MessageBox.Show("Havayolu Seçiniz");
-                cmbHavayolu.DroppedDown = true;
+                CmbDropControl();
                 return;
             }
-            else if(cmbKalkis.SelectedIndex == 0)
-            {
-                MessageBox.Show("Havaalanı Seçiniz");
-                cmbKalkis.DroppedDown = true;
-                return;
-            }
-            else if (cmbVaris.SelectedIndex == 0)
-            {
-                MessageBox.Show("Havaalanı Seçiniz");
-                cmbVaris.DroppedDown = true;
-                return;
-            }
-            else if (cmbUcak.SelectedIndex == 0)
-            {
-                MessageBox.Show("Uçak Seçiniz");
-                cmbUcak.DroppedDown = true;
-                return;
-            }
-
             try
             {
-
                 TimeSpan time = TimeSpan.Parse(txtKalkisSaat.Text);
                 time.ToString();
                 TimeSpan time2 = TimeSpan.Parse(txtVarisSaat.Text);
@@ -72,7 +46,7 @@ namespace UcusBilgileriApp
                 UcusBL u = new UcusBL();
                 Ucus ucsK = new Ucus();
 
-                ucsK.Ucus_Numarasi = txtUcusNumara.Text.Trim(); 
+                ucsK.Ucus_Numarasi = txtUcusNumara.Text.Trim();
                 //ucsK.Ucus_Numarasi = ucus_numarasi;
                 ucsK.Id_Havayolu = cmbHavayolu.SelectedValue.ToString();
                 ucsK.Kalkis_Yeri_Id = cmbKalkis.SelectedValue.ToString();
@@ -84,28 +58,23 @@ namespace UcusBilgileriApp
                 ucsK.Tahmini_Sure = time3;
                 ucsK.Id_Ucak = cmbUcak.SelectedValue.ToString();
 
-
-                if (ucus_numarasi==null)
+                if (ucus_numarasi == null)
                 {
                     MessageBox.Show(u.Kaydet(ucsK) ? "Başarılı" : "Başarısız");
                 }
                 else
                 {
-                    
                     if (u.Guncelle(ucsK))
                     {
                         ucus_numarasi = null;
                         Temizle();
                         MessageBox.Show("Güncelleme Başarılı");
-
-
                     }
                     else
                     {
                         MessageBox.Show("Güncelleme Başarısız!");
                     }
                 }
-                
 
             }
 
@@ -130,7 +99,7 @@ namespace UcusBilgileriApp
             {
                 MessageBox.Show("Bilinmeyen Hata!!");
             }
-          
+
         }
 
         void Temizle()
@@ -154,6 +123,8 @@ namespace UcusBilgileriApp
             btnSil.Visible = false;
             txtUcusNumara.Enabled = true;
             lblUcusNo.Cursor = Cursors.Default;
+            txtKalkisTarih.Value = DateTime.Now;
+            txtVarisTarih.Value = DateTime.Now;
 
         }
 
@@ -215,8 +186,8 @@ namespace UcusBilgileriApp
         private void Saat_KeyPress(object sender, KeyPressEventArgs e)
         {
             int a = (int)e.KeyChar;
-           
-            if ((a >=48 && a <= 58)|| a == 8 )
+
+            if ((a >= 48 && a <= 58) || a == 8)
             {
                 e.Handled = false;
             }
@@ -231,9 +202,51 @@ namespace UcusBilgileriApp
             Temizle();
         }
 
-    
+
+        public bool SecenekKontrol()
+        {
+
+            if (cmbHavayolu.SelectedIndex == 0 || cmbKalkis.SelectedIndex == 0 ||
+            cmbVaris.SelectedIndex == 0 || cmbUcak.SelectedIndex == 0)
+            {
+                return false;
+            }
+
+            else
+            {
+                return true;
+            }
+
+
+        }
+        public void CmbDropControl()
+        {
+            if (SecenekKontrol() == false)
+            {
+                if (cmbHavayolu.SelectedIndex == 0)
+                {
+                    MessageBox.Show("Havayolu Seçiniz");
+                    cmbHavayolu.DroppedDown = true;
+                }
+                else if (cmbKalkis.SelectedIndex == 0)
+                {
+                    MessageBox.Show("Kalkış Yeri Seçiniz");
+                    cmbKalkis.DroppedDown = true;
+                }
+                else if (cmbVaris.SelectedIndex == 0)
+                {
+                    MessageBox.Show("Varış Yeri Seçiniz");
+                    cmbVaris.DroppedDown = true;
+                }
+                else if (cmbUcak.SelectedIndex == 0)
+                {
+                    MessageBox.Show("Ucak Seçiniz");
+                    cmbUcak.DroppedDown = true;
+                }
+            }
+        }
     }
-    
+
 
 
 

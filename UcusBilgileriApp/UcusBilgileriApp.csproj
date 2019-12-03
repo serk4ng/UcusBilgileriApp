@@ -54,6 +54,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -65,6 +71,9 @@
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -92,14 +101,41 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Desktop\Gazi.KazanMyo.Sube1.OkulApp-master\Gazi.KazanMyo.Sube1.OkulApp-master\Gazi.KazanMyo.Sube1.OkulApp\Gazi.KazanMyo.Sube1.OkulApp.csproj">
+      <Project>{eb5ac093-68a9-4910-b853-49ed756cd862}</Project>
+      <Name>Gazi.KazanMyo.Sube1.OkulApp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\Desktop\Gazi.KazanMyo.Sube1.OkulApp-master\Gazi.KazanMyo.Sube1.OkulApp-master\Gazi.Sube1.CustomControlsLib\Gazi.Sube1.CustomControlsLib.csproj">
+      <Project>{d150615e-472e-4670-a7d2-202f481ed756}</Project>
+      <Name>Gazi.Sube1.CustomControlsLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\Desktop\Gazi.KazanMyo.Sube1.OkulApp-master\Gazi.KazanMyo.Sube1.OkulApp-master\Gazi.Sube1.DAL\Gazi.Sube1.DAL.csproj">
+      <Project>{645a5e96-467a-428a-a298-fd0dce85028d}</Project>
+      <Name>Gazi.Sube1.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\Desktop\Gazi.KazanMyo.Sube1.OkulApp-master\Gazi.KazanMyo.Sube1.OkulApp-master\Gazi.Sube1.OkulApp.BLL\Gazi.Sube1.OkulApp.BLL.csproj">
+      <Project>{8972c38c-b63f-48e7-819d-321b66f991d1}</Project>
+      <Name>Gazi.Sube1.OkulApp.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\Desktop\Gazi.KazanMyo.Sube1.OkulApp-master\Gazi.KazanMyo.Sube1.OkulApp-master\Gazi.Sube1.OkulApp.MODELS\Gazi.Sube1.OkulApp.MODELS.csproj">
+      <Project>{04386dc8-d837-4077-a809-6e6e69d64294}</Project>
+      <Name>Gazi.Sube1.OkulApp.MODELS</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UcusBilgileriApp.BLL\UcusBilgileriApp.BLL.csproj">
       <Project>{38135107-491C-4F03-A43D-0534761E82C9}</Project>
       <Name>UcusBilgileriApp.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UcusBilgileriApp.CustomControlsLib\UcusBilgileriApp.CustomControlsLib.csproj">
+      <Project>{1289a64e-e5f2-4dc5-ad6f-5d8962846b7b}</Project>
+      <Name>UcusBilgileriApp.CustomControlsLib</Name>
     </ProjectReference>
     <ProjectReference Include="..\UcusBilgileriApp.MODELS\UcusBilgileriApp.MODELS.csproj">
       <Project>{9F181F5C-7ADD-4998-B972-BEDAB48B4F0C}</Project>
       <Name>UcusBilgileriApp.MODELS</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

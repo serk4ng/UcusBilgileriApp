@@ -15,7 +15,7 @@ namespace UcusBilgileriApp.BLL
         Helper hlp = new Helper();
         public bool Kaydet(Ucus ucs)
         {
-            
+
             try
             {
                 string cmdtext = "Insert into tblUcusBilgileri values(@Ucus_Numarasi, @Id_Havayolu, @Kalkis_Yeri_Id, @Varis_Yeri_Id, @Kalkis_Tarih, @Kalkis_Saat, @Varis_Tarih, @Varis_Saat, @Tahmini_Sure, @Id_Ucak)";
@@ -72,9 +72,9 @@ namespace UcusBilgileriApp.BLL
                     u = new Ucus();
                     u.Ucus_Numarasi = dr["Ucus_Numarasi"].ToString();
                     u.Id_Havayolu = dr["Id_Havayolu"].ToString();
-                    u.Kalkis_Yeri_Id = dr["Kalkis_Yeri_Id"].ToString();                 
-                    u.Varis_Yeri_Id = dr["Varis_Yeri_Id"].ToString();     
-                    u.Kalkis_Tarih =Convert.ToDateTime(dr["Kalkis_Tarih"].ToString());
+                    u.Kalkis_Yeri_Id = dr["Kalkis_Yeri_Id"].ToString();
+                    u.Varis_Yeri_Id = dr["Varis_Yeri_Id"].ToString();
+                    u.Kalkis_Tarih = Convert.ToDateTime(dr["Kalkis_Tarih"].ToString());
                     u.Kalkis_Saat = TimeSpan.Parse(dr["Kalkis_Saat"].ToString());
                     u.Varis_Tarih = Convert.ToDateTime(dr["Varis_Tarih"]);
                     u.Varis_Saat = TimeSpan.Parse(dr["Varis_Saat"].ToString());
@@ -93,13 +93,26 @@ namespace UcusBilgileriApp.BLL
 
         public bool UcusSil(string Ucus_Numarasi)
         {
-            SqlParameter[] p = { new SqlParameter("@Ucus_Numarasi", Ucus_Numarasi) };
-            return hlp.ExecuteNonQuery("Delete from tblUcusBilgileri where Ucus_Numarasi=@Ucus_Numarasi", p) > 0;
+            try
+            {
+                SqlParameter[] p = { new SqlParameter("@Ucus_Numarasi", Ucus_Numarasi) };
+                return hlp.ExecuteNonQuery("Delete from tblUcusBilgileri where Ucus_Numarasi=@Ucus_Numarasi", p) > 0;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public void Dispose()
         {
             hlp.Dispose();
         }
+
     }
+
 }
