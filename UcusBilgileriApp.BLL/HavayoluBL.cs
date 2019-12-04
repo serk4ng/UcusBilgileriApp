@@ -1,6 +1,7 @@
-﻿using Gazi.Sube1.DAL;
+﻿using UcusBilgileriApp.DAL;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -26,7 +27,170 @@ namespace UcusBilgileriApp.BLL
             return lst;
         }
 
+        public bool Kaydet(Havayolu ha)
+        {
 
+            try
+            {
+                string cmdtext = "Insert into tblHavayollari values(@Id_Havayolu,@Havayolu_Adi)";
+
+                SqlParameter[] p = { new SqlParameter("@Id_Havayolu", ha.Id_Havayolu), new SqlParameter("@Havayolu_Adi", ha.Havayolu_Adi) };
+                return hlp.ExecuteNonQuery(cmdtext, p) > 0;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        public bool Guncelle(Havayolu ha)
+        {
+            try
+            {
+                SqlParameter[] p = { new SqlParameter("@Id_Havayolu", ha.Id_Havayolu), new SqlParameter("@Havayolu_Adi", ha.Havayolu_Adi) };
+                return hlp.ExecuteNonQuery("Update tblHavayollari set Id_Havayolu=@Id_Havayolu,Havayolu_Adi=@Havayolu_Adi Where Id_Havayolu=@Id_Havayolu", p) > 0;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        public Havayolu HavayoluBul(string Id_Havayolu)
+        {
+            try
+            {
+                SqlParameter[] p = { new SqlParameter("@Id_Havayolu", Id_Havayolu) };
+                SqlDataReader dr = hlp.ExecuteReader("Select Id_Havayolu,Havayolu_Adi from tblHavayollari Where Id_Havayolu=@Id_Havayolu", p);
+                Havayolu ha = null;
+
+                if (dr.Read())
+                {
+                    ha = new Havayolu();
+                    ha.Id_Havayolu = dr["Id_Havayolu"].ToString();
+                    ha.Havayolu_Adi = dr["Havayolu_Adi"].ToString();
+
+                }
+                dr.Close();
+                return ha;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public bool HavayoluSil(string Id_Havayolu)
+        {
+            try
+            {
+                SqlParameter[] p = { new SqlParameter("@Id_Havayolu", Id_Havayolu) };
+                return hlp.ExecuteNonQuery("Delete from tblHavayollari where Id_Havayolu=@Id_Havayolu", p) > 0;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public bool EnvanterKaydet(Havayolu ha)
+        {
+
+            try
+            {
+                string cmdtext = "Insert into tblHavayoluEnvanter values(@Id_Havayolu,@Id_Ucak,@Adet)";
+
+                SqlParameter[] p = { new SqlParameter("@Id_Havayolu", ha.Id_Havayolu), new SqlParameter("@Id_Ucak", ha.Id_Ucak), new SqlParameter("@Adet", ha.Adet) };
+                return hlp.ExecuteNonQuery(cmdtext, p) > 0;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        public bool EnvanterGuncelle(Havayolu ha)
+        {
+            try
+            {
+                SqlParameter[] p = { new SqlParameter("@Id_Havayolu", ha.Id_Havayolu), new SqlParameter("@Id_Ucak", ha.Id_Ucak), new SqlParameter("@Adet", ha.Adet) };
+                return hlp.ExecuteNonQuery("Update tblHavayoluEnvanter set Id_Havayolu=@Id_Havayolu,Id_Ucak=@Id_Ucak,Adet=@Adet Where Id_Havayolu=@Id_Havayolu", p) > 0;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        public Havayolu HavayoluEnvanterBul(string Id_Havayolu)
+        {
+            try
+            {
+                SqlParameter[] p = { new SqlParameter("@Id_Havayolu", Id_Havayolu) };
+                SqlDataReader dr = hlp.ExecuteReader("Select Id_Havayolu,Id_Ucak,Adet from tblHavayoluEnvanter Where Id_Havayolu=@Id_Havayolu", p);
+                Havayolu ha = null;
+                Ucak u = null;
+
+                if (dr.Read())
+                {
+                    ha = new Havayolu();
+                    ha.Id_Havayolu = dr["Id_Havayolu"].ToString();
+                    u.Id_Ucak = dr["Id_Ucak"].ToString();
+                    ha.Adet = Convert.ToInt32(dr["Adet"]);
+
+                }
+                dr.Close();
+                return ha;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public bool HavayoluEnvanterSil(string Id_Havayolu)
+        {
+            try
+            {
+                SqlParameter[] p = { new SqlParameter("@Id_Havayolu", Id_Havayolu) };
+                return hlp.ExecuteNonQuery("Delete from tblHavayoluEnvanter where Id_Havayolu=@Id_Havayolu", p) > 0;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+            public DataTable HavayollariTable() => hlp.GetDataTable("Select * from tblHavayollari");
+             public DataTable HavayollariEnvanterTable() => hlp.GetDataTable("Select * from tblHavayoluEnvanter");
 
         public void Dispose()
         {

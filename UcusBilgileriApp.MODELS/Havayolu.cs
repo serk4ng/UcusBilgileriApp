@@ -10,5 +10,7 @@ namespace UcusBilgileriApp.MODELS
     {
         public string Id_Havayolu { get; set; }
         public string Havayolu_Adi { get; set; }
+        public string Id_Ucak { get; set; }
+        public int Adet { get; set; }
     }
 }

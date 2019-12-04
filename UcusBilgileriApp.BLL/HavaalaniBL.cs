@@ -1,6 +1,7 @@
-﻿using Gazi.Sube1.DAL;
+﻿using UcusBilgileriApp.DAL;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -26,6 +27,7 @@ namespace UcusBilgileriApp.BLL
             return lst;
         }
 
+        
 
 
         public void Dispose()

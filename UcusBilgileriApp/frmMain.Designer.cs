@@ -29,12 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.uçuşİşlemleriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuUcusEkleSilGuncelle = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuUcusBilgileriListeleme = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuHavayoluIslemleri = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuHavayoluEkleSilGuncelle = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.havaalaniİşlemleriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuHavaalaniEkleSilGuncelle = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuHavayollariListele = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuHavayoluEnvanterIslemleri = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuHavayoluEnvanterListele = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,7 +47,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.uçuşİşlemleriToolStripMenuItem,
-            this.havaalaniİşlemleriToolStripMenuItem});
+            this.menuHavayoluIslemleri});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -52,7 +57,8 @@
             // uçuşİşlemleriToolStripMenuItem
             // 
             this.uçuşİşlemleriToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuUcusEkleSilGuncelle});
+            this.menuUcusEkleSilGuncelle,
+            this.menuUcusBilgileriListeleme});
             this.uçuşİşlemleriToolStripMenuItem.Name = "uçuşİşlemleriToolStripMenuItem";
             this.uçuşİşlemleriToolStripMenuItem.Size = new System.Drawing.Size(92, 20);
             this.uçuşİşlemleriToolStripMenuItem.Text = "Uçuş İşlemleri";
@@ -60,36 +66,70 @@
             // menuUcusEkleSilGuncelle
             // 
             this.menuUcusEkleSilGuncelle.Name = "menuUcusEkleSilGuncelle";
-            this.menuUcusEkleSilGuncelle.Size = new System.Drawing.Size(192, 22);
+            this.menuUcusEkleSilGuncelle.Size = new System.Drawing.Size(195, 22);
             this.menuUcusEkleSilGuncelle.Text = "Uçuş Ekle-Sil-Güncelle";
             this.menuUcusEkleSilGuncelle.Click += new System.EventHandler(this.menuUcusEkleSilGuncelle_Click);
+            // 
+            // menuUcusBilgileriListeleme
+            // 
+            this.menuUcusBilgileriListeleme.Name = "menuUcusBilgileriListeleme";
+            this.menuUcusBilgileriListeleme.Size = new System.Drawing.Size(195, 22);
+            this.menuUcusBilgileriListeleme.Text = "Uçuş Bilgileri Listeleme";
+            this.menuUcusBilgileriListeleme.Click += new System.EventHandler(this.menuUcusBilgileriListeleme_Click);
+            // 
+            // menuHavayoluIslemleri
+            // 
+            this.menuHavayoluIslemleri.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuHavayoluEkleSilGuncelle,
+            this.menuHavayollariListele,
+            this.menuHavayoluEnvanterIslemleri,
+            this.menuHavayoluEnvanterListele});
+            this.menuHavayoluIslemleri.Name = "menuHavayoluIslemleri";
+            this.menuHavayoluIslemleri.Size = new System.Drawing.Size(116, 20);
+            this.menuHavayoluIslemleri.Text = "Havayolu İşlemleri";
+            // 
+            // menuHavayoluEkleSilGuncelle
+            // 
+            this.menuHavayoluEkleSilGuncelle.Name = "menuHavayoluEkleSilGuncelle";
+            this.menuHavayoluEkleSilGuncelle.Size = new System.Drawing.Size(220, 22);
+            this.menuHavayoluEkleSilGuncelle.Text = "Havayolu Ekle-Sil-Güncelle";
+            this.menuHavayoluEkleSilGuncelle.Click += new System.EventHandler(this.menuHavayoluEkleSilGuncelle_Click);
             // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // havaalaniİşlemleriToolStripMenuItem
+            // menuHavayollariListele
             // 
-            this.havaalaniİşlemleriToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuHavaalaniEkleSilGuncelle});
-            this.havaalaniİşlemleriToolStripMenuItem.Name = "havaalaniİşlemleriToolStripMenuItem";
-            this.havaalaniİşlemleriToolStripMenuItem.Size = new System.Drawing.Size(118, 20);
-            this.havaalaniİşlemleriToolStripMenuItem.Text = "Havaalani İşlemleri";
+            this.menuHavayollariListele.Name = "menuHavayollariListele";
+            this.menuHavayollariListele.Size = new System.Drawing.Size(220, 22);
+            this.menuHavayollariListele.Text = "Havayollari Listele";
+            this.menuHavayollariListele.Click += new System.EventHandler(this.menuHavayollariListele_Click);
             // 
-            // menuHavaalaniEkleSilGuncelle
+            // menuHavayoluEnvanterIslemleri
             // 
-            this.menuHavaalaniEkleSilGuncelle.Name = "menuHavaalaniEkleSilGuncelle";
-            this.menuHavaalaniEkleSilGuncelle.Size = new System.Drawing.Size(218, 22);
-            this.menuHavaalaniEkleSilGuncelle.Text = "Havaalani Ekle-Sil-Güncelle";
+            this.menuHavayoluEnvanterIslemleri.Name = "menuHavayoluEnvanterIslemleri";
+            this.menuHavayoluEnvanterIslemleri.Size = new System.Drawing.Size(220, 22);
+            this.menuHavayoluEnvanterIslemleri.Text = "Havayolu Envanter İşlemleri";
+            this.menuHavayoluEnvanterIslemleri.Click += new System.EventHandler(this.havayoluEnvanterKayıtToolStripMenuItem_Click);
+            // 
+            // menuHavayoluEnvanterListele
+            // 
+            this.menuHavayoluEnvanterListele.Name = "menuHavayoluEnvanterListele";
+            this.menuHavayoluEnvanterListele.Size = new System.Drawing.Size(220, 22);
+            this.menuHavayoluEnvanterListele.Text = "Havayolu Envanter Listele";
+            this.menuHavayoluEnvanterListele.Click += new System.EventHandler(this.menuHavayoluEnvanterListele_Click);
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.menuStrip1);
-            this.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmMain";
@@ -107,7 +147,11 @@
         private System.Windows.Forms.ToolStripMenuItem uçuşİşlemleriToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menuUcusEkleSilGuncelle;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem havaalaniİşlemleriToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem menuHavaalaniEkleSilGuncelle;
+        private System.Windows.Forms.ToolStripMenuItem menuHavayoluIslemleri;
+        private System.Windows.Forms.ToolStripMenuItem menuHavayoluEkleSilGuncelle;
+        private System.Windows.Forms.ToolStripMenuItem menuUcusBilgileriListeleme;
+        private System.Windows.Forms.ToolStripMenuItem menuHavayollariListele;
+        private System.Windows.Forms.ToolStripMenuItem menuHavayoluEnvanterIslemleri;
+        private System.Windows.Forms.ToolStripMenuItem menuHavayoluEnvanterListele;
     }
 }

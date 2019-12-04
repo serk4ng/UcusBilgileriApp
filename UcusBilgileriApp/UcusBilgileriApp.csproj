@@ -54,11 +54,53 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmHavayoluBul.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHavayoluBul.Designer.cs">
+      <DependentUpon>frmHavayoluBul.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmHavayollariIslemleri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHavayollariIslemleri.Designer.cs">
+      <DependentUpon>frmHavayollariIslemleri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmHavayoluEnvanter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHavayoluEnvanter.Designer.cs">
+      <DependentUpon>frmHavayoluEnvanter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmHavayoluEnvanterBul.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHavayoluEnvanterBul.Designer.cs">
+      <DependentUpon>frmHavayoluEnvanterBul.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmHavayoluEnvanterListele.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHavayoluEnvanterListele.Designer.cs">
+      <DependentUpon>frmHavayoluEnvanterListele.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmHavayoluListe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHavayoluListe.Designer.cs">
+      <DependentUpon>frmHavayoluListe.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUcusListe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUcusListe.Designer.cs">
+      <DependentUpon>frmUcusListe.cs</DependentUpon>
     </Compile>
     <Compile Include="Helper.cs" />
     <Compile Include="Program.cs" />
@@ -72,8 +114,29 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmHavayoluBul.resx">
+      <DependentUpon>frmHavayoluBul.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHavayollariIslemleri.resx">
+      <DependentUpon>frmHavayollariIslemleri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHavayoluEnvanter.resx">
+      <DependentUpon>frmHavayoluEnvanter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHavayoluEnvanterBul.resx">
+      <DependentUpon>frmHavayoluEnvanterBul.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHavayoluEnvanterListele.resx">
+      <DependentUpon>frmHavayoluEnvanterListele.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHavayoluListe.resx">
+      <DependentUpon>frmHavayoluListe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUcusListe.resx">
+      <DependentUpon>frmUcusListe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -128,6 +191,10 @@
     <ProjectReference Include="..\UcusBilgileriApp.CustomControlsLib\UcusBilgileriApp.CustomControlsLib.csproj">
       <Project>{1289a64e-e5f2-4dc5-ad6f-5d8962846b7b}</Project>
       <Name>UcusBilgileriApp.CustomControlsLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UcusBilgileriApp.DAL\UcusBilgileriApp.DAL.csproj">
+      <Project>{6b3a3d84-ba7c-4e60-8a15-f5d194cf07e0}</Project>
+      <Name>UcusBilgileriApp.DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\UcusBilgileriApp.MODELS\UcusBilgileriApp.MODELS.csproj">
       <Project>{9F181F5C-7ADD-4998-B972-BEDAB48B4F0C}</Project>

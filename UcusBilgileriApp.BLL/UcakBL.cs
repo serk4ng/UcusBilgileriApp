@@ -1,4 +1,4 @@
-﻿using Gazi.Sube1.DAL;
+﻿using UcusBilgileriApp.DAL;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;

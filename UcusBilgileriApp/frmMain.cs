@@ -21,9 +21,64 @@ namespace UcusBilgileriApp
         {
             Form1 frm = new Form1();
             frm.WindowState = FormWindowState.Maximized;
-
             frm.MaximizeBox = false;
             frm.MinimizeBox = false;
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void menuUcusBilgileriListeleme_Click(object sender, EventArgs e)
+        {
+            frmUcusListe frm = new frmUcusListe();
+            frm.WindowState = FormWindowState.Maximized;
+            frm.MaximizeBox = false;
+            frm.MinimizeBox = false;
+            frm.MdiParent = this;
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+
+        private void menuHavayoluEkleSilGuncelle_Click(object sender, EventArgs e)
+        {
+            frmHavayollariIslemleri frm = new frmHavayollariIslemleri();
+            frm.WindowState = FormWindowState.Maximized;
+            frm.MaximizeBox = false;
+            frm.MinimizeBox = false;
+            frm.MdiParent = this;
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void menuHavayollariListele_Click(object sender, EventArgs e)
+        {
+            frmHavayoluListe frm = new frmHavayoluListe();
+            frm.WindowState = FormWindowState.Maximized;
+            frm.MaximizeBox = false;
+            frm.MinimizeBox = false;
+            frm.MdiParent = this;
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void havayoluEnvanterKayıtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmHavayoluEnvanter frm = new frmHavayoluEnvanter();
+            frm.WindowState = FormWindowState.Maximized;
+            frm.MaximizeBox = false;
+            frm.MinimizeBox = false;
+            frm.MdiParent = this;
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void menuHavayoluEnvanterListele_Click(object sender, EventArgs e)
+        {
+            frmHavayoluEnvanterListele frm = new frmHavayoluEnvanterListele();
+            frm.WindowState = FormWindowState.Maximized;
+            frm.MaximizeBox = false;
+            frm.MinimizeBox = false;
+            frm.MdiParent = this;
             frm.MdiParent = this;
             frm.Show();
         }

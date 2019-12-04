@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using UcusBilgileriApp.BLL;
 using UcusBilgileriApp.MODELS;
 
+
 namespace UcusBilgileriApp
 {
     public partial class Form1 : Form
