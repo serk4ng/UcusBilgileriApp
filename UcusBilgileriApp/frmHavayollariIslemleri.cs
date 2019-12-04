@@ -56,8 +56,8 @@ namespace UcusBilgileriApp
             catch (SqlException ex)
             {
                 switch (ex.Number)
-                {           
-                        default:
+                {
+                    default:
                         MessageBox.Show("Veritabanı Hatası" + ex.Number);
                         break;
                 }
@@ -87,7 +87,7 @@ namespace UcusBilgileriApp
         {
             frmHavayoluBul frm = new frmHavayoluBul(this);
             frm.Show();
-            
+
         }
 
         private void btnSil_Click(object sender, EventArgs e)

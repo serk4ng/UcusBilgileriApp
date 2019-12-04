@@ -46,11 +46,13 @@ namespace UcusBilgileriApp
 
         private void btnEkle_Click(object sender, EventArgs e)
         {
-            if (SecenekKontrol() == false)
+            try
             {
-                CmbDropControl();
-                return;
-            }
+                if (SecenekKontrol())
+                {
+                    CmbDropControl();
+                    return;
+                }
 
                 HavayoluBL hbl = new HavayoluBL();
                 Havayolu ha = new Havayolu();
@@ -59,7 +61,7 @@ namespace UcusBilgileriApp
                 ha.Adet = int.Parse(txtAdet.Text.Trim());
 
 
-            if (id_havayolu == null)
+                if (id_havayolu == null)
                 {
                     MessageBox.Show(hbl.EnvanterKaydet(ha) ? "Başarılı" : "Başarısız");
                 }
@@ -76,20 +78,42 @@ namespace UcusBilgileriApp
                         MessageBox.Show("Güncelleme Başarısız!");
                     }
                 }
-            
-            
+            }
+            catch (SqlException ex)
+            {
+                switch (ex.Number)
+                {
+                    case 245:
+                        MessageBox.Show("Sayısal Değerleri Doğru Giriniz.");
+                        break;
+                    default:
+                        MessageBox.Show("Veritabanı Hatası" + ex.Number);
+                        break;
+                }
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Sayısal Değerleri Doğru Giriniz.");
+            }
+
+            catch (Exception)
+            {
+                MessageBox.Show("Bilinmeyen Hata!!");
+            }
+
+
         }
 
         void Temizle()
         {
-          
+
             txtAdet.Text = string.Empty;
             btnEkle.Text = "Ekle";
             cmbHavayolu.SelectedIndex = 0;
             cmbUcak.SelectedIndex = 0;
             btnVazgec.Visible = false;
             btnSil.Visible = false;
-   
+
         }
 
         private void btnVazgec_Click(object sender, EventArgs e)
@@ -101,33 +125,28 @@ namespace UcusBilgileriApp
         public bool SecenekKontrol()
         {
 
-            if (cmbHavayolu.SelectedIndex == 0  || cmbUcak.SelectedIndex == 0)
+            if (cmbHavayolu.SelectedIndex == 0 || cmbUcak.SelectedIndex == 0)
+            {
+                return true;
+            }
+            else
             {
                 return false;
             }
 
-            else
-            {
-                return true;
-            }
-
-
         }
         public void CmbDropControl()
         {
-            if (SecenekKontrol() == false)
+            if (cmbHavayolu.SelectedIndex == 0)
             {
-                if (cmbHavayolu.SelectedIndex == 0)
-                {
-                    MessageBox.Show("Havayolu Seçiniz");
-                    cmbHavayolu.DroppedDown = true;
-                }
-               
-                else if (cmbUcak.SelectedIndex == 0)
-                {
-                    MessageBox.Show("Ucak Seçiniz");
-                    cmbUcak.DroppedDown = true;
-                }
+                MessageBox.Show("Havayolu Seçiniz");
+                cmbHavayolu.DroppedDown = true;
+            }
+
+            else if (cmbUcak.SelectedIndex == 0)
+            {
+                MessageBox.Show("Ucak Seçiniz");
+                cmbUcak.DroppedDown = true;
             }
         }
 

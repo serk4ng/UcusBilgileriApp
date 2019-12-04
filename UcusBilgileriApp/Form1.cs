@@ -22,15 +22,13 @@ namespace UcusBilgileriApp
             txtVarisTarih.CustomFormat = "yyyy-M-d";
 
         }
-
         private void label1_Click(object sender, EventArgs e)
         {
 
         }
-
         public void btnKaydet_Click(object sender, EventArgs e)
         {
-            if (SecenekKontrol() == false)
+            if (SecenekKontrol())
             {
                 CmbDropControl();
                 return;
@@ -48,7 +46,6 @@ namespace UcusBilgileriApp
                 Ucus ucsK = new Ucus();
 
                 ucsK.Ucus_Numarasi = txtUcusNumara.Text.Trim();
-                //ucsK.Ucus_Numarasi = ucus_numarasi;
                 ucsK.Id_Havayolu = cmbHavayolu.SelectedValue.ToString();
                 ucsK.Kalkis_Yeri_Id = cmbKalkis.SelectedValue.ToString();
                 ucsK.Varis_Yeri_Id = cmbVaris.SelectedValue.ToString();
@@ -78,7 +75,6 @@ namespace UcusBilgileriApp
                 }
 
             }
-
             catch (SqlException ex)
             {
                 switch (ex.Number)
@@ -100,9 +96,7 @@ namespace UcusBilgileriApp
             {
                 MessageBox.Show("Bilinmeyen Hata!!");
             }
-
         }
-
         void Temizle()
         {
             foreach (Control item in this.Controls["pnlUcusNo"].Controls)
@@ -126,9 +120,7 @@ namespace UcusBilgileriApp
             lblUcusNo.Cursor = Cursors.Default;
             txtKalkisTarih.Value = DateTime.Now;
             txtVarisTarih.Value = DateTime.Now;
-
         }
-
         public void Form1_Load(object sender, EventArgs e)
         {
             HavayoluBL hy = new HavayoluBL();
@@ -161,7 +153,6 @@ namespace UcusBilgileriApp
         {
             DialogResult cvp = MessageBox.Show("Kayıt Silinecek. Eminminisiniz?", "Silme Onayı", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-
             if (cvp == DialogResult.Yes)
             {
                 UcusBL ubl = new UcusBL();
@@ -180,7 +171,6 @@ namespace UcusBilgileriApp
             {
                 MessageBox.Show("İşlem İptal Edildi!");
                 Temizle();
-
             }
         }
 
@@ -197,32 +187,29 @@ namespace UcusBilgileriApp
                 e.Handled = true;
             }
         }
-
+       
         private void btnVazgec_Click(object sender, EventArgs e)
         {
             Temizle();
         }
 
-
         public bool SecenekKontrol()
         {
-
             if (cmbHavayolu.SelectedIndex == 0 || cmbKalkis.SelectedIndex == 0 ||
             cmbVaris.SelectedIndex == 0 || cmbUcak.SelectedIndex == 0)
-            {
-                return false;
-            }
-
-            else
             {
                 return true;
             }
 
+            else
+            {
+                return false;
+            }
 
         }
         public void CmbDropControl()
         {
-            if (SecenekKontrol() == false)
+            if (SecenekKontrol())
             {
                 if (cmbHavayolu.SelectedIndex == 0)
                 {
@@ -247,10 +234,6 @@ namespace UcusBilgileriApp
             }
         }
     }
-
-
-
-
 }
 
 
