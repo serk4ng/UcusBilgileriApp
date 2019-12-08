@@ -54,6 +54,24 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmHavaalaniBul.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHavaalaniBul.Designer.cs">
+      <DependentUpon>frmHavaalaniBul.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmHavaalaniIslemleri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHavaalaniIslemleri.Designer.cs">
+      <DependentUpon>frmHavaalaniIslemleri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmHavaalaniListe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHavaalaniListe.Designer.cs">
+      <DependentUpon>frmHavaalaniListe.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmHavayoluBul.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +120,24 @@
     <Compile Include="frmUcusListe.Designer.cs">
       <DependentUpon>frmUcusListe.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmYolcuBul.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmYolcuBul.Designer.cs">
+      <DependentUpon>frmYolcuBul.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmYolcuIslemleri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmYolcuIslemleri.Designer.cs">
+      <DependentUpon>frmYolcuIslemleri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmYolcuListele.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmYolcuListele.Designer.cs">
+      <DependentUpon>frmYolcuListele.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -113,6 +149,15 @@
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHavaalaniBul.resx">
+      <DependentUpon>frmHavaalaniBul.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHavaalaniIslemleri.resx">
+      <DependentUpon>frmHavaalaniIslemleri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHavaalaniListe.resx">
+      <DependentUpon>frmHavaalaniListe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmHavayoluBul.resx">
       <DependentUpon>frmHavayoluBul.cs</DependentUpon>
@@ -137,6 +182,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmUcusListe.resx">
       <DependentUpon>frmUcusListe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmYolcuBul.resx">
+      <DependentUpon>frmYolcuBul.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmYolcuIslemleri.resx">
+      <DependentUpon>frmYolcuIslemleri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmYolcuListele.resx">
+      <DependentUpon>frmYolcuListele.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -26,6 +26,7 @@ namespace UcusBilgileriApp.BLL
             dr.Close();
             return lst;
         }
+        
 
         public bool Kaydet(Havayolu ha)
         {
@@ -72,14 +73,17 @@ namespace UcusBilgileriApp.BLL
             try
             {
                 SqlParameter[] p = { new SqlParameter("@Id_Havayolu", Id_Havayolu) };
-                SqlDataReader dr = hlp.ExecuteReader("Select Id_Havayolu,Havayolu_Adi from tblHavayollari Where Id_Havayolu=@Id_Havayolu", p);
+               SqlDataReader dr = hlp.ExecuteReader("Select Id_Havayolu,Havayolu_Adi from tblHavayollari Where Id_Havayolu=@Id_Havayolu", p);
+   
                 Havayolu ha = null;
 
                 if (dr.Read())
                 {
                     ha = new Havayolu();
+
                     ha.Id_Havayolu = dr["Id_Havayolu"].ToString();
                     ha.Havayolu_Adi = dr["Havayolu_Adi"].ToString();
+
 
                 }
                 dr.Close();
@@ -108,14 +112,14 @@ namespace UcusBilgileriApp.BLL
             }
         }
 
-        public bool EnvanterKaydet(Havayolu ha)
+        public bool HavayoluEnvanterKaydet(Ucak u)
         {
 
             try
             {
                 string cmdtext = "Insert into tblHavayoluEnvanter values(@Id_Havayolu,@Id_Ucak,@Adet)";
 
-                SqlParameter[] p = { new SqlParameter("@Id_Havayolu", ha.Id_Havayolu), new SqlParameter("@Id_Ucak", ha.Id_Ucak), new SqlParameter("@Adet", ha.Adet) };
+                SqlParameter[] p = { new SqlParameter("@Id_Havayolu", u.Id_Havayolu), new SqlParameter("@Id_Ucak", u.Id_Ucak), new SqlParameter("@Adet", u.Adet) };
                 return hlp.ExecuteNonQuery(cmdtext, p) > 0;
             }
             catch (SqlException ex)
@@ -130,12 +134,12 @@ namespace UcusBilgileriApp.BLL
 
         }
 
-        public bool EnvanterGuncelle(Havayolu ha)
+        public bool EnvanterGuncelle(Ucak u)
         {
             try
             {
-                SqlParameter[] p = { new SqlParameter("@Id_Havayolu", ha.Id_Havayolu), new SqlParameter("@Id_Ucak", ha.Id_Ucak), new SqlParameter("@Adet", ha.Adet) };
-                return hlp.ExecuteNonQuery("Update tblHavayoluEnvanter set Id_Havayolu=@Id_Havayolu,Id_Ucak=@Id_Ucak,Adet=@Adet Where Id_Havayolu=@Id_Havayolu", p) > 0;
+                SqlParameter[] p = { new SqlParameter("@Id_Havayolu", u.Id_Havayolu), new SqlParameter("@Id_Ucak", u.Id_Ucak), new SqlParameter("@Adet", u.Adet) };
+                return hlp.ExecuteNonQuery("Update tblHavayoluEnvanter set Id_Havayolu=@Id_Havayolu,Id_Ucak=@Id_Ucak,Adet=@Adet Where Id_Havayolu=@Id_Havayolu and Id_Ucak=@Id_Ucak", p) > 0;
             }
             catch (SqlException ex)
             {
@@ -159,10 +163,10 @@ namespace UcusBilgileriApp.BLL
 
                 if (dr.Read())
                 {
-                    ha = new Havayolu();
-                    ha.Id_Havayolu = dr["Id_Havayolu"].ToString();
+                    u = new Ucak();
+                    u.Id_Havayolu = dr["Id_Havayolu"].ToString();
                     u.Id_Ucak = dr["Id_Ucak"].ToString();
-                    ha.Adet = Convert.ToInt32(dr["Adet"]);
+                    u.Adet = Convert.ToInt32(dr["Adet"]);
 
                 }
                 dr.Close();
@@ -173,12 +177,12 @@ namespace UcusBilgileriApp.BLL
                 throw;
             }
         }
-        public bool HavayoluEnvanterSil(string Id_Havayolu)
+        public bool HavayoluEnvanterSil(string Id_Havayolu,string Id_Ucak)
         {
             try
             {
-                SqlParameter[] p = { new SqlParameter("@Id_Havayolu", Id_Havayolu) };
-                return hlp.ExecuteNonQuery("Delete from tblHavayoluEnvanter where Id_Havayolu=@Id_Havayolu", p) > 0;
+                SqlParameter[] p = { new SqlParameter("@Id_Havayolu", Id_Havayolu), new SqlParameter("@Id_Ucak", Id_Ucak) };
+                return hlp.ExecuteNonQuery("Delete from tblHavayoluEnvanter where Id_Havayolu=@Id_Havayolu and Id_Ucak=@Id_Ucak", p) > 0;
             }
             catch (SqlException ex)
             {
@@ -190,7 +194,7 @@ namespace UcusBilgileriApp.BLL
             }
         }
             public DataTable HavayollariTable() => hlp.GetDataTable("Select * from tblHavayollari");
-             public DataTable HavayollariEnvanterTable() => hlp.GetDataTable("Select * from tblHavayoluEnvanter");
+             public DataTable HavayollariEnvanterTable() => hlp.GetDataTable("Select hy.Havayolu_Adi, u.Ucak_Adi, [Adet] from tblHavayoluEnvanter he,tblHavayollari hy,tblUcak u where he.Id_Havayolu=hy.Id_Havayolu and he.Id_Ucak=u.Id_Ucak");
 
         public void Dispose()
         {

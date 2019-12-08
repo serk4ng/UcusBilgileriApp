@@ -82,5 +82,50 @@ namespace UcusBilgileriApp
             frm.MdiParent = this;
             frm.Show();
         }
+
+        private void menuHavaalaniEkleSilGuncelle_Click(object sender, EventArgs e)
+        {
+            frmHavaalaniIslemleri frm = new frmHavaalaniIslemleri();
+            frm.WindowState = FormWindowState.Maximized;
+            frm.MaximizeBox = false;
+            frm.MinimizeBox = false;
+            frm.MdiParent = this;
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void menuHavaalanlariniListele_Click(object sender, EventArgs e)
+        {
+            frmHavaalaniListe frm = new frmHavaalaniListe();
+            frm.WindowState = FormWindowState.Maximized;
+            frm.MaximizeBox = false;
+            frm.MinimizeBox = false;
+            frm.MdiParent = this;
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void menuYolcuEkleSilGuncelle_Click(object sender, EventArgs e)
+        {
+            frmYolcuIslemleri frm = new frmYolcuIslemleri();
+            frm.WindowState = FormWindowState.Maximized;
+            frm.MaximizeBox = false;
+            frm.MinimizeBox = false;
+            frm.MdiParent = this;
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void menuYolculariListele_Click(object sender, EventArgs e)
+        {
+            frmYolcuListele frm = new frmYolcuListele();
+            frm.WindowState = FormWindowState.Maximized;
+            frm.MaximizeBox = false;
+            frm.MinimizeBox = false;
+            frm.MdiParent = this;
+            frm.MdiParent = this;
+            frm.Show();
+            
+        }
     }
 }

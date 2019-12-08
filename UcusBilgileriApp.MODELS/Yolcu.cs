@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace UcusBilgileriApp.MODELS
 {
-   public class Havayolu
+    public class Yolcu
     {
-        public string Id_Havayolu { get; set; }
-        public string Havayolu_Adi { get; set; }
+        public string Ad { get; set; }
+        public string Soyad { get; set; }
+        public string Ucus_Numarasi { get; set; }
     }
 }

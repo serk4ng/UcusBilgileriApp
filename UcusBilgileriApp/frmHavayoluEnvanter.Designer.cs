@@ -31,13 +31,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnEkle = new System.Windows.Forms.Button();
             this.cmbUcak = new System.Windows.Forms.ComboBox();
-            this.txtAdet = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.cmbHavayolu = new System.Windows.Forms.ComboBox();
             this.btnBul = new System.Windows.Forms.Button();
             this.btnVazgec = new System.Windows.Forms.Button();
             this.btnSil = new System.Windows.Forms.Button();
+            this.cmbAdet = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -66,13 +66,7 @@
             this.cmbUcak.Name = "cmbUcak";
             this.cmbUcak.Size = new System.Drawing.Size(121, 21);
             this.cmbUcak.TabIndex = 3;
-            // 
-            // txtAdet
-            // 
-            this.txtAdet.Location = new System.Drawing.Point(196, 131);
-            this.txtAdet.Name = "txtAdet";
-            this.txtAdet.Size = new System.Drawing.Size(100, 20);
-            this.txtAdet.TabIndex = 4;
+            this.cmbUcak.SelectedIndexChanged += new System.EventHandler(this.cmbUcak_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -135,18 +129,26 @@
             this.btnSil.Visible = false;
             this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
             // 
+            // cmbAdet
+            // 
+            this.cmbAdet.FormattingEnabled = true;
+            this.cmbAdet.Location = new System.Drawing.Point(196, 132);
+            this.cmbAdet.Name = "cmbAdet";
+            this.cmbAdet.Size = new System.Drawing.Size(121, 21);
+            this.cmbAdet.TabIndex = 11;
+            // 
             // frmHavayoluEnvanter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.cmbAdet);
             this.Controls.Add(this.btnSil);
             this.Controls.Add(this.btnVazgec);
             this.Controls.Add(this.btnBul);
             this.Controls.Add(this.cmbHavayolu);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtAdet);
             this.Controls.Add(this.cmbUcak);
             this.Controls.Add(this.btnEkle);
             this.Controls.Add(this.label1);
@@ -167,7 +169,7 @@
         public System.Windows.Forms.Button btnSil;
         public System.Windows.Forms.Button btnEkle;
         public System.Windows.Forms.ComboBox cmbUcak;
-        public System.Windows.Forms.TextBox txtAdet;
         public System.Windows.Forms.ComboBox cmbHavayolu;
+        public System.Windows.Forms.ComboBox cmbAdet;
     }
 }

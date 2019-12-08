@@ -46,6 +46,7 @@
     <Compile Include="UcakBL.cs" />
     <Compile Include="UcusBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="YolcuBL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\Desktop\Gazi.KazanMyo.Sube1.OkulApp-master\Gazi.KazanMyo.Sube1.OkulApp-master\Gazi.Sube1.DAL\Gazi.Sube1.DAL.csproj">

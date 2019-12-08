@@ -36,16 +36,17 @@
             // 
             this.grdUcusBilgileri.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.grdUcusBilgileri.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdUcusBilgileri.Location = new System.Drawing.Point(12, 12);
+            this.grdUcusBilgileri.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grdUcusBilgileri.Location = new System.Drawing.Point(0, 0);
             this.grdUcusBilgileri.Name = "grdUcusBilgileri";
-            this.grdUcusBilgileri.Size = new System.Drawing.Size(769, 337);
+            this.grdUcusBilgileri.Size = new System.Drawing.Size(806, 405);
             this.grdUcusBilgileri.TabIndex = 0;
             // 
             // frmUcusListe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(794, 390);
+            this.ClientSize = new System.Drawing.Size(806, 405);
             this.Controls.Add(this.grdUcusBilgileri);
             this.Name = "frmUcusListe";
             this.Text = "frmUcusListe";

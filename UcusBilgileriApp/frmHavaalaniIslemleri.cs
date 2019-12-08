@@ -13,36 +13,52 @@ using UcusBilgileriApp.MODELS;
 
 namespace UcusBilgileriApp
 {
-    public partial class frmHavayollariIslemleri : Form
+    public partial class frmHavaalaniIslemleri : Form
     {
 
         SqlConnection cn = null;
-        public string id_havayolu = null;
+        public string id_havaalani = null;
 
-        public frmHavayollariIslemleri()
+        public frmHavaalaniIslemleri()
         {
             InitializeComponent();
+        }
+
+        void Temizle()
+        {
+            foreach (Control item in this.Controls["pnlText"].Controls)
+            {
+                item.Text = string.Empty;
+            }
+            btnEkle.Text = "Ekle";
+            id_havaalani = null;
+            txtHavaalaniID.Enabled = true;
+            btnVazgec.Visible = false;
+            btnSil.Visible = false;
+            lblID.Cursor = Cursors.Default;
         }
 
         private void btnEkle_Click(object sender, EventArgs e)
         {
             try
             {
-                HavayoluBL hbl = new HavayoluBL();
-                Havayolu ha = new Havayolu();
+                HavaalaniBL hbl = new HavaalaniBL();
+                Havaalani ha = new Havaalani();
 
-                ha.Id_Havayolu = txtHavayoluID.Text.Trim();
-                ha.Havayolu_Adi = txtHavayoluAdi.Text.Trim();
+                ha.Id_Yer = txtHavaalaniID.Text.Trim();
+                ha.Yer_Adi = txtHavaalaniAdi.Text.Trim();
 
-                if (id_havayolu == null)
+
+                if (id_havaalani == null)
                 {
-                    MessageBox.Show(hbl.Kaydet(ha) ? "Başarılı" : "Başarısız");
+                    MessageBox.Show(hbl.HavaalaniKaydet(ha) ? "Başarılı" : "Başarısız");
+                    Temizle();
                 }
                 else
                 {
-                    if (hbl.Guncelle(ha))
+                    if (hbl.HavaalaniGuncelle(ha))
                     {
-                        id_havayolu = null;
+                        id_havaalani = null;
                         Temizle();
                         MessageBox.Show("Güncelleme Başarılı");
                     }
@@ -68,27 +84,6 @@ namespace UcusBilgileriApp
 
         }
 
-
-        void Temizle()
-        {
-            foreach (Control item in this.Controls["pnlText"].Controls)
-            {
-                item.Text = string.Empty;
-            }
-            btnEkle.Text = "Ekle";
-            id_havayolu = null;
-            txtHavayoluID.Enabled = true;
-            btnVazgec.Visible = false;
-            btnSil.Visible = false;
-        }
-
-        private void btnBul_Click(object sender, EventArgs e)
-        {
-            frmHavayoluBul frm = new frmHavayoluBul(this);
-            frm.Show();
-
-        }
-
         private void btnSil_Click(object sender, EventArgs e)
         {
             DialogResult cvp = MessageBox.Show("Kayıt Silinecek. Eminminisiniz?", "Silme Onayı", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -96,8 +91,8 @@ namespace UcusBilgileriApp
 
             if (cvp == DialogResult.Yes)
             {
-                HavayoluBL hbl = new HavayoluBL();
-                if (hbl.HavayoluSil(id_havayolu))
+                HavaalaniBL hbl = new HavaalaniBL();
+                if (hbl.HavaalaniSil(id_havaalani))
                 {
                     MessageBox.Show("Silme Başarılı!");
                     Temizle();
@@ -118,7 +113,14 @@ namespace UcusBilgileriApp
 
         private void btnVazgec_Click(object sender, EventArgs e)
         {
-            Temizle();                  
+            Temizle();
+        }
+
+        private void btnBul_Click(object sender, EventArgs e)
+        {
+            frmHavaalaniBul frm = new frmHavaalaniBul(this);
+            frm.Show();
         }
     }
+    
 }

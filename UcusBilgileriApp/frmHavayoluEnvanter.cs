@@ -17,6 +17,8 @@ namespace UcusBilgileriApp
     {
         SqlConnection cn = null;
         public string id_havayolu = null;
+        public string id_ucak = null;
+
 
         public frmHavayoluEnvanter()
         {
@@ -42,32 +44,38 @@ namespace UcusBilgileriApp
 
             frmHavayoluEnvanterBul frm = new frmHavayoluEnvanterBul(this);
             frm.Show();
+
         }
 
         private void btnEkle_Click(object sender, EventArgs e)
         {
             try
             {
-                if (SecenekKontrol())
+                if (btnSil.Visible != true)
                 {
-                    CmbDropControl();
-                    return;
+                    if (SecenekKontrol())
+                    {
+                        CmbDropControl();
+                        return;
+                    }
                 }
+               
 
                 HavayoluBL hbl = new HavayoluBL();
-                Havayolu ha = new Havayolu();
-                ha.Id_Havayolu = cmbHavayolu.SelectedValue.ToString();
-                ha.Id_Ucak = cmbUcak.SelectedValue.ToString();
-                ha.Adet = int.Parse(txtAdet.Text.Trim());
-
+                Ucak u = new Ucak();
+                u.Id_Havayolu = cmbHavayolu.SelectedValue.ToString();
+                u.Id_Ucak = cmbUcak.SelectedValue.ToString();
+                u.Adet = int.Parse(cmbAdet.Text.ToString());
+                id_ucak = cmbUcak.SelectedValue.ToString();
 
                 if (id_havayolu == null)
                 {
-                    MessageBox.Show(hbl.EnvanterKaydet(ha) ? "Başarılı" : "Başarısız");
+                    MessageBox.Show(hbl.HavayoluEnvanterKaydet(u) ? "Başarılı" : "Başarısız");
+                    Temizle();
                 }
                 else
                 {
-                    if (hbl.EnvanterGuncelle(ha))
+                    if (hbl.EnvanterGuncelle(u))
                     {
                         id_havayolu = null;
                         Temizle();
@@ -106,13 +114,23 @@ namespace UcusBilgileriApp
 
         void Temizle()
         {
-
-            txtAdet.Text = string.Empty;
             btnEkle.Text = "Ekle";
-            cmbHavayolu.SelectedIndex = 0;
-            cmbUcak.SelectedIndex = 0;
+            HavayoluBL hy = new HavayoluBL();
+            cmbHavayolu.DisplayMember = "Havayolu_Adi";
+            cmbHavayolu.ValueMember = "Id_Havayolu";
+            cmbHavayolu.DataSource = hy.HavayoluListesi();
+            UcakBL uc = new UcakBL();
+            cmbUcak.DisplayMember = "Ucak_Adi";
+            cmbUcak.ValueMember = "Id_Ucak";
+            cmbUcak.DataSource = uc.UcakListesi();
+            cmbAdet.Text = "";
+            cmbAdet.ResetText();
+            
+            id_havayolu = null;
+            id_ucak = null;
             btnVazgec.Visible = false;
             btnSil.Visible = false;
+            cmbHavayolu.Enabled = true;
 
         }
 
@@ -137,28 +155,34 @@ namespace UcusBilgileriApp
         }
         public void CmbDropControl()
         {
-            if (cmbHavayolu.SelectedIndex == 0)
+            if (btnSil.Visible != true)
             {
-                MessageBox.Show("Havayolu Seçiniz");
-                cmbHavayolu.DroppedDown = true;
-            }
+                if (cmbHavayolu.SelectedIndex == 0)
+                {
+                    MessageBox.Show("Havayolu Seçiniz");
+                    cmbHavayolu.DroppedDown = true;
+                }
 
-            else if (cmbUcak.SelectedIndex == 0)
-            {
-                MessageBox.Show("Ucak Seçiniz");
-                cmbUcak.DroppedDown = true;
+                else if (cmbUcak.SelectedIndex == 0)
+                {
+                    MessageBox.Show("Ucak Seçiniz");
+                    cmbUcak.DroppedDown = true;
+                }
             }
+            
+          
         }
 
         private void btnSil_Click(object sender, EventArgs e)
         {
+            id_ucak = cmbUcak.SelectedValue.ToString();
             DialogResult cvp = MessageBox.Show("Kayıt Silinecek. Eminminisiniz?", "Silme Onayı", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
 
             if (cvp == DialogResult.Yes)
             {
                 HavayoluBL hbl = new HavayoluBL();
-                if (hbl.HavayoluEnvanterSil(id_havayolu))
+                if (hbl.HavayoluEnvanterSil(id_havayolu,id_ucak))
                 {
                     MessageBox.Show("Silme Başarılı!");
                     Temizle();
@@ -177,5 +201,26 @@ namespace UcusBilgileriApp
 
             }
         }
+
+        private void cmbUcak_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int ucakindex = cmbUcak.SelectedIndex;
+            int adetindex = cmbAdet.SelectedIndex;
+
+
+            if (btnSil.Visible == true)
+            {
+
+                if (ucakindex != 0)
+                {
+                    adetindex = cmbAdet.SelectedIndex;
+                    cmbAdet.SelectedIndex = ucakindex;
+                }
+
+
+            }
+         
+        }
     }
+
 }

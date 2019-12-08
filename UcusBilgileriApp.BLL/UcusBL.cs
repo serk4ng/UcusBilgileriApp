@@ -108,7 +108,7 @@ namespace UcusBilgileriApp.BLL
             }
         }
 
-        public DataTable UcusBilgileriTable() => hlp.GetDataTable("Select * from tblUcusBilgileri");
+        public DataTable UcusBilgileriTable() => hlp.GetDataTable("Select u.[Ucus_Numarasi], hy.Havayolu_Adi, k.Yer_Adi, k.Yer_Adi, u.[Kalkis_Tarih], u.[Kalkis_Saat], u.[Varis_Tarih], u.[Varis_Saat], u.[Tahmini_Sure], uc.Ucak_Adi from tblUcusBilgileri u ,tblKalkisVaris k, tblUcak uc,tblHavayollari hy where k.Id_Yer=u.Kalkis_Yeri_Id and uc.Id_Ucak=u.Id_Ucak and hy.Id_Havayolu=u.Id_Havayolu");
 
         public void Dispose()
         {

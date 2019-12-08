@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
+
 namespace UcusBilgileriApp.CustomControlsLib
 {
     public enum WorkMode
