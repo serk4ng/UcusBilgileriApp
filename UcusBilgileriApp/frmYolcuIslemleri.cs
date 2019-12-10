@@ -41,23 +41,20 @@ namespace UcusBilgileriApp
             btnEkle.Text = "Ekle";
             ucus_numarasi = null;
             btnVazgec.Visible = false;
-            btnSil.Visible = false;
+            btnSil.Visible = false;       
             cmbUcusNumarasi.SelectedIndex = 0;
+            cmbAd.Enabled = true;
+            cmbSoyad.Enabled = true;
+            
+
 
             YolcuBL ybl = new YolcuBL();
             cmbUcusNumarasi.DisplayMember = "Ucus_Numarasi";
             cmbUcusNumarasi.ValueMember = "Ucus_Numarasi";
             cmbUcusNumarasi.DataSource = ybl.YolcuListesi();
 
-
-            cmbAd.DisplayMember = "Ad";
-            cmbAd.ValueMember = "Ad";
-            cmbAd.DataSource = ybl.YolcuListesi();
-
-            cmbSoyad.DisplayMember = "Soyad";
-            cmbSoyad.ValueMember = "Soyad";
-            cmbSoyad.DataSource = ybl.YolcuListesi();
-
+            cmbAd.ResetText();
+            cmbSoyad.ResetText();
         }
 
         private void btnEkle_Click(object sender, EventArgs e)
@@ -139,12 +136,12 @@ namespace UcusBilgileriApp
 
         private void frmYolcuIslemleri_Load(object sender, EventArgs e)
         {
-            YolcuBL ybl = new YolcuBL();
+            UcusBL ubl = new UcusBL();
             cmbUcusNumarasi.DisplayMember = "Ucus_Numarasi";
             cmbUcusNumarasi.ValueMember = "Ucus_Numarasi";
-            cmbUcusNumarasi.DataSource = ybl.YolcuListesi();
-
-            
+            cmbUcusNumarasi.DataSource = ubl.UcusNumarasiListesi();
+            /*
+            YolcuBL ybl = new YolcuBL();
             cmbAd.DisplayMember = "Ad";
             cmbAd.ValueMember = "Ad";
             cmbAd.DataSource = ybl.YolcuListesi();
@@ -152,7 +149,7 @@ namespace UcusBilgileriApp
             cmbSoyad.DisplayMember = "Soyad";
             cmbSoyad.ValueMember = "Soyad";
             cmbSoyad.DataSource = ybl.YolcuListesi();
-      
+            */
         }
 
         private void cmbAd_SelectedIndexChanged(object sender, EventArgs e)

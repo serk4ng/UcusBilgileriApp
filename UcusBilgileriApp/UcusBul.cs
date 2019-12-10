@@ -33,7 +33,7 @@ namespace UcusBilgileriApp
             try
             {
                 UcusBL ubl = new UcusBL();
-                Ucus u = ubl.UcusBul(txtUcusNo.Text.Trim());
+                Ucus u = ubl.UcusBul(cmbUcusNo.SelectedValue.ToString());
 
                 if (u == null)
                 {
@@ -51,7 +51,8 @@ namespace UcusBilgileriApp
                     frm.txtVarisSaat.Text = u.Varis_Saat.ToString();
                     frm.txtTahminiSure.Text = u.Tahmini_Sure.ToString();
                     frm.cmbUcak.SelectedValue = u.Id_Ucak;
-                    frm.ucus_numarasi = frm.txtUcusNumara.Text;
+                   // frm.ucus_numarasi = frm.txtUcusNumara.Text;
+                    frm.ucus_numarasi = cmbUcusNo.SelectedValue.ToString();
 
                     frm.btnVazgec.Visible = true;
                     frm.btnSil.Visible = true;
@@ -68,6 +69,14 @@ namespace UcusBilgileriApp
             }
 
 
+        }
+
+        private void UcusBul_Load(object sender, EventArgs e)
+        {
+            UcusBL hy = new UcusBL();
+            cmbUcusNo.DisplayMember = "Ucus_Numarasi";
+            cmbUcusNo.ValueMember = "Ucus_Numarasi";
+            cmbUcusNo.DataSource = hy.UcusNumarasiListesi();
         }
     }
 }

@@ -8,21 +8,93 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UcusBilgileriApp.BLL;
+using UcusBilgileriApp.MODELS;
 
 namespace UcusBilgileriApp
 {
     public partial class frmUcusListe : Form
     {
+        DataTable dt;
         public frmUcusListe()
         {
             InitializeComponent();
+            grdUcusBilgileri.AutoGenerateColumns = false;
         }
 
         private void frmUcusListe_Load(object sender, EventArgs e)
         {
             UcusBL ubl = new UcusBL();
-            grdUcusBilgileri.DataSource = ubl.UcusBilgileriTable();
+            dt = ubl.UcusBilgileriTable();
+            grdUcusBilgileri.DataSource = dt;
             ubl.Dispose();
+
+            UcakBL ucbl = new UcakBL();
+            clmUcak.DataSource = ucbl.UcakListesi();
+            clmUcak.DisplayMember = "Ucak_Adi";
+            clmUcak.ValueMember = "Id_Ucak";
+            ucbl.Dispose();
+
+            HavayoluBL hbl = new HavayoluBL();
+            clmHavayolu.DataSource = hbl.HavayoluListesi();
+            clmHavayolu.DisplayMember = "Havayolu_Adi";
+            clmHavayolu.ValueMember = "Id_Havayolu";
+            hbl.Dispose();
+
+            HavaalaniBL habl = new HavaalaniBL();
+            clmKalkisYeri.DataSource = habl.HavaalaniListesi();
+            clmKalkisYeri.DisplayMember = "Yer_Adi";
+            clmKalkisYeri.ValueMember = "Id_Yer";
+
+            clmVarisYeri.DataSource = habl.HavaalaniListesi();
+            clmVarisYeri.DisplayMember = "Yer_Adi";
+            clmVarisYeri.ValueMember = "Id_Yer";
+
+            habl.Dispose();
+        }
+
+        private void btnKaydet_Click(object sender, EventArgs e)
+        {
+
+            UcusBL ubl = new UcusBL();
+            
+            foreach (DataRow item in dt.Rows)
+            {
+
+                Ucus u = new Ucus();
+                if (item.RowState != DataRowState.Deleted)
+                {
+                    u.Ucus_Numarasi = item[0].ToString();
+                    u.Id_Havayolu = item[1].ToString();
+                    u.Kalkis_Yeri_Id = item[2].ToString();
+                    u.Varis_Yeri_Id = item[3].ToString();
+                    u.Kalkis_Tarih = Convert.ToDateTime(item[4].ToString());
+                    u.Kalkis_Saat = TimeSpan.Parse(item[5].ToString());
+                    u.Varis_Tarih = Convert.ToDateTime(item[6].ToString());
+                    u.Varis_Saat = TimeSpan.Parse(item[7].ToString());
+                    u.Tahmini_Sure = TimeSpan.Parse(item[8].ToString());
+                    u.Id_Ucak = item[9].ToString();
+
+                }
+
+                switch (item.RowState)
+                {
+                    case DataRowState.Added:
+                        ubl.Ucus_Numarasi = u.Ucus_Numarasi;
+                        ubl.Kaydet(u);
+                        break;
+                    case DataRowState.Deleted:
+                        ubl.Ucus_Numarasi = u.Ucus_Numarasi;
+                        ubl.UcusSil((string)(item[0, DataRowVersion.Original]));
+                        break;
+                    case DataRowState.Modified:
+                        ubl.Ucus_Numarasi = u.Ucus_Numarasi;
+                        u.Ucus_Numarasi = item[0].ToString();
+                        ubl.Guncelle(u);
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
     }
 }

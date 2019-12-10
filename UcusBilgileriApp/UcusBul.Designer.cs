@@ -29,21 +29,14 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcusBul));
-            this.txtUcusNo = new System.Windows.Forms.TextBox();
             this.btnBul = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.cmbUcusNo = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
-            // 
-            // txtUcusNo
-            // 
-            this.txtUcusNo.Location = new System.Drawing.Point(133, 55);
-            this.txtUcusNo.Name = "txtUcusNo";
-            this.txtUcusNo.Size = new System.Drawing.Size(100, 20);
-            this.txtUcusNo.TabIndex = 0;
             // 
             // btnBul
             // 
-            this.btnBul.Location = new System.Drawing.Point(146, 81);
+            this.btnBul.Location = new System.Drawing.Point(151, 81);
             this.btnBul.Name = "btnBul";
             this.btnBul.Size = new System.Drawing.Size(75, 23);
             this.btnBul.TabIndex = 1;
@@ -60,6 +53,14 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Uçuş No Giriniz :";
             // 
+            // cmbUcusNo
+            // 
+            this.cmbUcusNo.FormattingEnabled = true;
+            this.cmbUcusNo.Location = new System.Drawing.Point(133, 54);
+            this.cmbUcusNo.Name = "cmbUcusNo";
+            this.cmbUcusNo.Size = new System.Drawing.Size(121, 21);
+            this.cmbUcusNo.TabIndex = 3;
+            // 
             // UcusBul
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -67,11 +68,12 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(361, 199);
+            this.Controls.Add(this.cmbUcusNo);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnBul);
-            this.Controls.Add(this.txtUcusNo);
             this.Name = "UcusBul";
             this.Text = "UcusBul";
+            this.Load += new System.EventHandler(this.UcusBul_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -80,6 +82,6 @@
         #endregion
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.Button btnBul;
-        public System.Windows.Forms.TextBox txtUcusNo;
+        private System.Windows.Forms.ComboBox cmbUcusNo;
     }
 }

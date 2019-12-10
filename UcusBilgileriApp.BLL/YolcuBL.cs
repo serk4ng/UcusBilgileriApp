@@ -71,7 +71,7 @@ namespace UcusBilgileriApp.BLL
             try
             {
                 SqlParameter[] p = { new SqlParameter("@Ad", y.Ad), new SqlParameter("@Soyad", y.Soyad), new SqlParameter("@Ucus_Numarasi", y.Ucus_Numarasi)};
-                return hlp.ExecuteNonQuery("Update tblYolcular set Ad=@Ad,Soyad=@Soyad,Ad=@Ad,Ucus_Numarasi=@Ucus_Numarasi Where Ucus_Numarasi=@Ucus_Numarasi", p) > 0;
+                return hlp.ExecuteNonQuery("Update tblYolcular set Ucus_Numarasi=@Ucus_Numarasi Where Ad=@Ad and Soyad=@Soyad", p) > 0;
             }
             catch (SqlException ex)
             {

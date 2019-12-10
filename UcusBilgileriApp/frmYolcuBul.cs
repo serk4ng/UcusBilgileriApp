@@ -38,7 +38,7 @@ namespace UcusBilgileriApp
             }
             else
             {
-
+                
                 frm.cmbAd.DisplayMember = "Ad";
                 frm.cmbAd.ValueMember = "Ad";
                 frm.cmbSoyad.DisplayMember = "Soyad";
@@ -47,16 +47,18 @@ namespace UcusBilgileriApp
                 frm.cmbUcusNumarasi.ValueMember = "Ucus_Numarasi";
                 frm.cmbAd.DataSource = ybl.YolcuListesi(y.Ad, y.Soyad);
                 frm.cmbSoyad.DataSource = ybl.YolcuListesi(y.Ad, y.Soyad);
-                frm.cmbUcusNumarasi.DataSource = ybl.YolcuListesi();
-
+                UcusBL ubl = new UcusBL();
+                frm.cmbUcusNumarasi.DataSource = ubl.UcusNumarasiListesi();
+                
                 frm.cmbAd.SelectedValue= y.Ad;
                 frm.cmbSoyad.SelectedValue = y.Soyad;
 
                 frm.cmbUcusNumarasi.SelectedValue = y.Ucus_Numarasi;
-                frm.ucus_numarasi = y.Ucus_Numarasi;
                 frm.ad = y.Ad;
                 frm.soyad = y.Soyad;
                 frm.ucus_numarasi = y.Ucus_Numarasi;
+                frm.cmbAd.Enabled = false;
+                frm.cmbSoyad.Enabled = false;
                 frm.btnVazgec.Visible = true;
                 frm.btnSil.Visible = true;
                 frm.btnEkle.Text = "Guncelle";

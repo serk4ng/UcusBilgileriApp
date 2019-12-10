@@ -13,6 +13,20 @@ namespace UcusBilgileriApp.BLL
     public class UcusBL
     {
         Helper hlp = new Helper();
+
+        public string Ucus_Numarasi = null;
+        public List<Ucus> UcusNumarasiListesi()
+        {
+            SqlDataReader dr = hlp.ExecuteReader("Select Ucus_Numarasi,Id_Havayolu from tblUcusBilgileri", null);
+            List<Ucus> lst = new List<Ucus>();
+            while (dr.Read())
+            {
+                lst.Add(new Ucus { Ucus_Numarasi = dr["Ucus_Numarasi"].ToString() , Id_Havayolu = dr["Id_Havayolu"].ToString() });
+            }
+            lst.Insert(0, new Ucus { Ucus_Numarasi = "Ucus Numarasi Seçiniz" });
+            dr.Close();
+            return lst;
+        }
         public bool Kaydet(Ucus ucs)
         {
 
@@ -107,8 +121,9 @@ namespace UcusBilgileriApp.BLL
                 throw;
             }
         }
-
-        public DataTable UcusBilgileriTable() => hlp.GetDataTable("Select u.[Ucus_Numarasi], hy.Havayolu_Adi, k.Yer_Adi, k.Yer_Adi, u.[Kalkis_Tarih], u.[Kalkis_Saat], u.[Varis_Tarih], u.[Varis_Saat], u.[Tahmini_Sure], uc.Ucak_Adi from tblUcusBilgileri u ,tblKalkisVaris k, tblUcak uc,tblHavayollari hy where k.Id_Yer=u.Kalkis_Yeri_Id and uc.Id_Ucak=u.Id_Ucak and hy.Id_Havayolu=u.Id_Havayolu");
+        
+        public DataTable UcusBilgileriTable() => hlp.GetDataTable("Select u.[Ucus_Numarasi], hy.Havayolu_Adi,hy.Id_Havayolu,u.Id_Havayolu, u.Kalkis_Yeri_Id,u.Varis_Yeri_Id,k.Yer_Adi, k.Yer_Adi, u.[Kalkis_Tarih], u.[Kalkis_Saat], u.[Varis_Tarih], u.[Varis_Saat], u.[Tahmini_Sure], uc.Ucak_Adi,uc.Id_Ucak from tblUcusBilgileri u ,tblKalkisVaris k, tblUcak uc,tblHavayollari hy where k.Id_Yer=u.Kalkis_Yeri_Id and uc.Id_Ucak=u.Id_Ucak and hy.Id_Havayolu=u.Id_Havayolu");
+        //public DataTable UcusBilgileriTable2() => hlp.GetDataTable("Select u.[Ucus_Numarasi], hy.Havayolu_Adi, (Select K.Yer_Adi from tblKalkisVaris k,tblUcusBilgileri u where u.Ucus_Numarasi="+Ucus_Numarasi+" and u.Kalkis_Yeri_Id=k.Id_Yer) Kalkis_Yeri,(Select K.Yer_Adi from tblKalkisVaris k,tblUcusBilgileri u where u.Ucus_Numarasi="+Ucus_Numarasi+" and u.Varis_Yeri_Id=k.Id_Yer) Varis_Yeri, u.[Kalkis_Tarih], u.[Kalkis_Saat], u.[Varis_Tarih], u.[Varis_Saat], u.[Tahmini_Sure], uc.Ucak_Adi from tblUcusBilgileri u ,tblKalkisVaris k, tblUcak uc,tblHavayollari hy where k.Id_Yer=u.Kalkis_Yeri_Id  and uc.Id_Ucak=u.Id_Ucak and hy.Id_Havayolu=u.Id_Havayolu");
 
         public void Dispose()
         {
