@@ -20,7 +20,6 @@ namespace UcusBilgileriApp
             InitializeComponent();
             grdHavaalanlari.AutoGenerateColumns = false;
         }
-
         private void frmHavaalaniListe_Load(object sender, EventArgs e)
         {
             HavaalaniBL hbl = new HavaalaniBL();
@@ -28,7 +27,6 @@ namespace UcusBilgileriApp
             grdHavaalanlari.DataSource = dt;
             hbl.Dispose();
         }
-
         private void btnKaydet_Click(object sender, EventArgs e)
         {
             HavaalaniBL hbl = new HavaalaniBL();
@@ -39,8 +37,6 @@ namespace UcusBilgileriApp
                 Havaalani h = new Havaalani();
                 if (item.RowState != DataRowState.Deleted)
                 {
-                   
-
                     h.Id_Yer = item[0].ToString();
                     h.Yer_Adi = item[2].ToString();
                 }

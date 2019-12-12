@@ -31,7 +31,6 @@ namespace Gazi.Sube1.DAL//Data Access Layer
                 throw;
             }
         }
-
         public SqlDataReader ExecuteReader(string cmdtext, SqlParameter[] p)
         {
             try
@@ -50,7 +49,6 @@ namespace Gazi.Sube1.DAL//Data Access Layer
                 throw;
             }
         }
-
         public void OpenConnection()
         {
             try
@@ -65,7 +63,6 @@ namespace Gazi.Sube1.DAL//Data Access Layer
                 throw;
             }
         }
-
         public void Dispose()
         {
             cn.Dispose();

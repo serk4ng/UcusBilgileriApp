@@ -64,11 +64,10 @@ namespace UcusBilgileriApp
                 if (item.RowState != DataRowState.Deleted)
                 {
 
-                    /*for (int i = 0; i < 25; i++)
-                    {
-                        MessageBox.Show(item[i].ToString());
-                    }
-                    */
+                    //for (int i = 0; i < 25; i++)
+                    //{
+                    //    MessageBox.Show(item[i].ToString());
+                    //}
 
                     u.Ucus_Numarasi = item[0].ToString();
                     u.Id_Havayolu = item[2].ToString();
@@ -107,11 +106,6 @@ namespace UcusBilgileriApp
                         break;
                 }
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

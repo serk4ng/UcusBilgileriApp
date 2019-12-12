@@ -20,13 +20,11 @@ namespace UcusBilgileriApp
         {
             InitializeComponent();
         }
-
         public frmHavayoluEnvanterBul(frmHavayoluEnvanter frm)
         {
             InitializeComponent();
             this.frm = frm;
         }
-
         private void frmHavayoluEnvanterBul_Load(object sender, EventArgs e)
         {
             HavayoluBL hy = new HavayoluBL();
@@ -34,16 +32,14 @@ namespace UcusBilgileriApp
             cmbHavayolu.ValueMember = "Id_Havayolu";
             cmbHavayolu.DataSource = hy.HavayoluListesi();
         }
-
         private void btnBul_Click(object sender, EventArgs e)
         {
-
             HavayoluBL hbl = new HavayoluBL();
             Havayolu ha = hbl.HavayoluBul((string)cmbHavayolu.SelectedValue);
             Ucak u = null;
             if (ha == null)
             {
-                MessageBox.Show("Havayolu Bulunamadı");     
+                MessageBox.Show("Havayolu Bulunamadı");
             }
             else
             {
@@ -51,13 +47,11 @@ namespace UcusBilgileriApp
                 frm.cmbHavayolu.SelectedValue = ha.Id_Havayolu;
                 frm.cmbUcak.SelectedValue = ha.Havayolu_Adi;
                 frm.cmbAdet.SelectedValue = u.Adet.ToString();
-               //frm.id_havayolu = u.Id_Havayolu;
                 frm.id_havayolu = cmbHavayolu.SelectedValue.ToString();
                 frm.btnVazgec.Visible = true;
                 frm.btnSil.Visible = true;
                 frm.cmbHavayolu.Enabled = false;
                 frm.btnEkle.Text = "Guncelle";
-
 
                 UcakBL ubl = new UcakBL();
                 frm.cmbUcak.DisplayMember = "Ucak_Adi";

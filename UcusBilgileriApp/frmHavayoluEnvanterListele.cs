@@ -21,7 +21,6 @@ namespace UcusBilgileriApp
             grdHavayoluEnvanter.AutoGenerateColumns = false;
 
         }
-
         private void frmHavayoluEnvanterListele_Load(object sender, EventArgs e)
         {
             HavayoluBL hbl = new HavayoluBL();
@@ -39,7 +38,6 @@ namespace UcusBilgileriApp
             clmUcakAdi.ValueMember = "Id_Ucak";
             ubl.Dispose();
         }
-
         private void btnKaydet_Click(object sender, EventArgs e)
         {
 
@@ -50,11 +48,12 @@ namespace UcusBilgileriApp
                 Ucak u = new Ucak();
                 if (item.RowState != DataRowState.Deleted)
                 {
-                    /*for (int i = 0; i < 5; i++)
-                    {
-                        MessageBox.Show(item[i].ToString());
-                    }
-                    */
+                    
+                    //for (int i = 0; i < 5; i++)
+                    //{
+                    //    MessageBox.Show(item[i].ToString());
+                    //}
+                    
                     u.Id_Havayolu = item[4].ToString();
                     u.Id_Ucak = item[3].ToString();
                     u.Adet = Convert.ToInt32(item[2].ToString());
