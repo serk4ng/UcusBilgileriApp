@@ -43,7 +43,7 @@ namespace UcusBilgileriApp
             Ucak u = null;
             if (ha == null)
             {
-                MessageBox.Show("Havayolu Bulunamadı");
+                MessageBox.Show("Havayolu Bulunamadı");     
             }
             else
             {

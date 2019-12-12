@@ -59,6 +59,7 @@ namespace UcusBilgileriApp
                 if (ucus_numarasi == null)
                 {
                     MessageBox.Show(u.Kaydet(ucsK) ? "Başarılı" : "Başarısız");
+                    Temizle();
                 }
                 else
                 {

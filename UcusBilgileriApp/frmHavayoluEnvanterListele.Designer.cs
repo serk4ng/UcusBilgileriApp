@@ -62,7 +62,7 @@
             // 
             // clmHavayoluAdi
             // 
-            this.clmHavayoluAdi.DataPropertyName = "Havayolu_Adi";
+            this.clmHavayoluAdi.DataPropertyName = "Id_Havayolu";
             this.clmHavayoluAdi.HeaderText = "Havayolu_Adi";
             this.clmHavayoluAdi.Name = "clmHavayoluAdi";
             this.clmHavayoluAdi.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -70,7 +70,7 @@
             // 
             // clmUcakAdi
             // 
-            this.clmUcakAdi.DataPropertyName = "Ucak_Adi";
+            this.clmUcakAdi.DataPropertyName = "Id_Ucak";
             this.clmUcakAdi.HeaderText = "Ucak_Adi";
             this.clmUcakAdi.Name = "clmUcakAdi";
             // 

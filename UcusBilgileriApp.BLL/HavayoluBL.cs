@@ -139,7 +139,7 @@ namespace UcusBilgileriApp.BLL
             try
             {
                 SqlParameter[] p = { new SqlParameter("@Id_Havayolu", u.Id_Havayolu), new SqlParameter("@Id_Ucak", u.Id_Ucak), new SqlParameter("@Adet", u.Adet) };
-                return hlp.ExecuteNonQuery("Update tblHavayoluEnvanter set Id_Havayolu=@Id_Havayolu,Id_Ucak=@Id_Ucak,Adet=@Adet Where Id_Havayolu=@Id_Havayolu and Id_Ucak=@Id_Ucak", p) > 0;
+                return hlp.ExecuteNonQuery("Update tblHavayoluEnvanter set Adet=@Adet Where Id_Havayolu=@Id_Havayolu and Id_Ucak=@Id_Ucak", p) > 0;
             }
             catch (SqlException ex)
             {
@@ -194,7 +194,7 @@ namespace UcusBilgileriApp.BLL
             }
         }
             public DataTable HavayollariTable() => hlp.GetDataTable("Select * from tblHavayollari");
-             public DataTable HavayollariEnvanterTable() => hlp.GetDataTable("Select hy.Havayolu_Adi, u.Ucak_Adi, [Adet] from tblHavayoluEnvanter he,tblHavayollari hy,tblUcak u where he.Id_Havayolu=hy.Id_Havayolu and he.Id_Ucak=u.Id_Ucak");
+             public DataTable HavayollariEnvanterTable() => hlp.GetDataTable("Select hy.Havayolu_Adi, u.Ucak_Adi, he.[Adet],u.Id_Ucak,hy.Id_Havayolu,he.Id_Havayolu,he.Id_Ucak from tblHavayoluEnvanter he,tblHavayollari hy,tblUcak u where he.Id_Havayolu=hy.Id_Havayolu and he.Id_Ucak=u.Id_Ucak");
 
         public void Dispose()
         {

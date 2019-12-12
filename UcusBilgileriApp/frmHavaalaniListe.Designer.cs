@@ -30,6 +30,8 @@
         {
             this.grdHavaalanlari = new System.Windows.Forms.DataGridView();
             this.btnKaydet = new System.Windows.Forms.Button();
+            this.clmIdYer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmYerAdi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grdHavaalanlari)).BeginInit();
             this.SuspendLayout();
             // 
@@ -37,6 +39,9 @@
             // 
             this.grdHavaalanlari.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.grdHavaalanlari.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdHavaalanlari.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.clmIdYer,
+            this.clmYerAdi});
             this.grdHavaalanlari.Dock = System.Windows.Forms.DockStyle.Top;
             this.grdHavaalanlari.Location = new System.Drawing.Point(0, 0);
             this.grdHavaalanlari.Name = "grdHavaalanlari";
@@ -52,6 +57,18 @@
             this.btnKaydet.Text = "Kaydet";
             this.btnKaydet.UseVisualStyleBackColor = true;
             this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click);
+            // 
+            // clmIdYer
+            // 
+            this.clmIdYer.DataPropertyName = "Id_Yer";
+            this.clmIdYer.HeaderText = "Id_Yer";
+            this.clmIdYer.Name = "clmIdYer";
+            // 
+            // clmYerAdi
+            // 
+            this.clmYerAdi.DataPropertyName = "Yer_Adi";
+            this.clmYerAdi.HeaderText = "Yer_Adi";
+            this.clmYerAdi.Name = "clmYerAdi";
             // 
             // frmHavaalaniListe
             // 
@@ -72,5 +89,7 @@
 
         private System.Windows.Forms.DataGridView grdHavaalanlari;
         private System.Windows.Forms.Button btnKaydet;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmIdYer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmYerAdi;
     }
 }

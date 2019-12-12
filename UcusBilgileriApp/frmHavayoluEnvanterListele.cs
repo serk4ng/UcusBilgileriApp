@@ -30,13 +30,13 @@ namespace UcusBilgileriApp
 
             clmHavayoluAdi.DataSource = hbl.HavayoluListesi();
             clmHavayoluAdi.DisplayMember = "Havayolu_Adi";
-            clmHavayoluAdi.ValueMember = "Havayolu_Adi";
+            clmHavayoluAdi.ValueMember = "Id_Havayolu";
             hbl.Dispose();
 
             UcakBL ubl = new UcakBL();
             clmUcakAdi.DataSource = ubl.UcakListesi();
             clmUcakAdi.DisplayMember = "Ucak_Adi";
-            clmUcakAdi.ValueMember = "Ucak_Adi";
+            clmUcakAdi.ValueMember = "Id_Ucak";
             ubl.Dispose();
         }
 
@@ -50,8 +50,13 @@ namespace UcusBilgileriApp
                 Ucak u = new Ucak();
                 if (item.RowState != DataRowState.Deleted)
                 {
-                    u.Id_Havayolu = item[0].ToString();
-                    u.Id_Ucak = item[1].ToString();
+                    /*for (int i = 0; i < 5; i++)
+                    {
+                        MessageBox.Show(item[i].ToString());
+                    }
+                    */
+                    u.Id_Havayolu = item[4].ToString();
+                    u.Id_Ucak = item[3].ToString();
                     u.Adet = Convert.ToInt32(item[2].ToString());
 
                 }
@@ -63,12 +68,13 @@ namespace UcusBilgileriApp
                         MessageBox.Show("Eklendi");
                         break;
                     case DataRowState.Deleted:
-                        hbl.HavayoluEnvanterSil((string)(item[0, DataRowVersion.Original]), (string)(item[1, DataRowVersion.Original]));
+                        hbl.HavayoluEnvanterSil((string)(item[4, DataRowVersion.Original]), (string)(item[3, DataRowVersion.Original]));
                         MessageBox.Show("Silindi");
                         break;
                     case DataRowState.Modified:
-                        u.Id_Havayolu = item[0].ToString();
-                        u.Id_Ucak = item[2].ToString();
+                        u.Id_Havayolu = item[4].ToString();
+                        u.Id_Ucak = item[3].ToString();
+                        u.Adet = Convert.ToInt32(item[2]);
                         hbl.EnvanterGuncelle(u);
                         MessageBox.Show("Guncellendi");
                         break;

@@ -18,6 +18,7 @@ namespace UcusBilgileriApp
         public frmHavaalaniListe()
         {
             InitializeComponent();
+            grdHavaalanlari.AutoGenerateColumns = false;
         }
 
         private void frmHavaalaniListe_Load(object sender, EventArgs e)
@@ -38,8 +39,10 @@ namespace UcusBilgileriApp
                 Havaalani h = new Havaalani();
                 if (item.RowState != DataRowState.Deleted)
                 {
+                   
+
                     h.Id_Yer = item[0].ToString();
-                    h.Yer_Adi = item[1].ToString();
+                    h.Yer_Adi = item[2].ToString();
                 }
 
                 switch (item.RowState)

@@ -100,7 +100,7 @@
             // 
             // clmVarisYeri
             // 
-            this.clmVarisYeri.DataPropertyName = "Id_Yer";
+            this.clmVarisYeri.DataPropertyName = "Id_Yer2";
             this.clmVarisYeri.HeaderText = "Varis_Yeri";
             this.clmVarisYeri.Name = "clmVarisYeri";
             this.clmVarisYeri.Resizable = System.Windows.Forms.DataGridViewTriState.True;
