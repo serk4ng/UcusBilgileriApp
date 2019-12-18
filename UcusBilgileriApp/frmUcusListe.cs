@@ -47,7 +47,7 @@ namespace UcusBilgileriApp
 
             clmVarisYeri.DataSource = habl.HavaalaniListesi();
             clmVarisYeri.DisplayMember = "Yer_Adi";
-            clmVarisYeri.ValueMember = "Id_Yer2";
+            clmVarisYeri.ValueMember = "Id_Yer";
 
             habl.Dispose();
         }
@@ -71,8 +71,8 @@ namespace UcusBilgileriApp
 
                     u.Ucus_Numarasi = item[0].ToString();
                     u.Id_Havayolu = item[2].ToString();
-                    u.Kalkis_Yeri_Id = item[19].ToString();
-                    u.Varis_Yeri_Id = item[20].ToString();
+                    u.Kalkis_Yeri_Id = item[3].ToString();
+                    u.Varis_Yeri_Id = item[4].ToString();
                     u.Kalkis_Tarih = Convert.ToDateTime(item[7].ToString());
                     u.Kalkis_Saat = TimeSpan.Parse(item[8].ToString());
                     u.Varis_Tarih = Convert.ToDateTime(item[9].ToString());

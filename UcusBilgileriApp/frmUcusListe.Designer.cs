@@ -92,7 +92,7 @@
             // 
             // clmKalkisYeri
             // 
-            this.clmKalkisYeri.DataPropertyName = "Id_Yer";
+            this.clmKalkisYeri.DataPropertyName = "Kalkis_Yeri_Id";
             this.clmKalkisYeri.HeaderText = "Kalkis_Yeri";
             this.clmKalkisYeri.Name = "clmKalkisYeri";
             this.clmKalkisYeri.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -100,7 +100,7 @@
             // 
             // clmVarisYeri
             // 
-            this.clmVarisYeri.DataPropertyName = "Id_Yer2";
+            this.clmVarisYeri.DataPropertyName = "Varis_Yeri_Id";
             this.clmVarisYeri.HeaderText = "Varis_Yeri";
             this.clmVarisYeri.Name = "clmVarisYeri";
             this.clmVarisYeri.Resizable = System.Windows.Forms.DataGridViewTriState.True;

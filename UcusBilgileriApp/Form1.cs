@@ -188,7 +188,7 @@ namespace UcusBilgileriApp
                 e.Handled = true;
             }
         }
-       
+
         private void btnVazgec_Click(object sender, EventArgs e)
         {
             Temizle();

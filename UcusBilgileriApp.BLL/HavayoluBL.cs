@@ -7,17 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UcusBilgileriApp.MODELS;
+using System.Data.Entity;
 
 namespace UcusBilgileriApp.BLL
 {
-    public class HavayoluBL: IDisposable
+    public class HavayoluBL : IDisposable
     {
         Helper hlp = new Helper();
 
-        public List<Havayolu>HavayoluListesi()
+        public List<Havayolu> HavayoluListesi()
         {
             SqlDataReader dr = hlp.ExecuteReader("Select Id_Havayolu,Havayolu_Adi from tblHavayollari", null);
-             List<Havayolu> lst = new  List<Havayolu>();
+            List<Havayolu> lst = new List<Havayolu>();
             while (dr.Read())
             {
                 lst.Add(new Havayolu { Id_Havayolu = dr["Id_Havayolu"].ToString(), Havayolu_Adi = dr["Havayolu_Adi"].ToString() });
@@ -26,17 +27,19 @@ namespace UcusBilgileriApp.BLL
             dr.Close();
             return lst;
         }
-        
 
-        public bool Kaydet(Havayolu ha)
+        public void Kaydet(Havayolu ha)
         {
-
             try
             {
-                string cmdtext = "Insert into tblHavayollari values(@Id_Havayolu,@Havayolu_Adi)";
+                // HATA: Yapılandırma Sistemi Başlatılamadı
+                DtbUcusEntities ctx = new DtbUcusEntities();
+                ctx.tblHavayollaris.Add(new tblHavayollari { Id_Havayolu = ha.Id_Havayolu, Havayolu_Adi = ha.Havayolu_Adi });
+                ctx.SaveChanges();
+                //string cmdtext = "Insert into tblHavayollari values(@Id_Havayolu,@Havayolu_Adi)";
 
-                SqlParameter[] p = { new SqlParameter("@Id_Havayolu", ha.Id_Havayolu), new SqlParameter("@Havayolu_Adi", ha.Havayolu_Adi) };
-                return hlp.ExecuteNonQuery(cmdtext, p) > 0;
+                //SqlParameter[] p = { new SqlParameter("@Id_Havayolu", ha.Id_Havayolu), new SqlParameter("@Havayolu_Adi", ha.Havayolu_Adi) };
+                //return hlp.ExecuteNonQuery(cmdtext, p) > 0;
             }
             catch (SqlException ex)
             {
@@ -48,14 +51,22 @@ namespace UcusBilgileriApp.BLL
                 throw ex;
             }
 
+
         }
 
-        public bool Guncelle(Havayolu ha)
+        public void Guncelle(Havayolu ha)
         {
             try
             {
-                SqlParameter[] p = { new SqlParameter("@Id_Havayolu", ha.Id_Havayolu), new SqlParameter("@Havayolu_Adi", ha.Havayolu_Adi) };
-                return hlp.ExecuteNonQuery("Update tblHavayollari set Id_Havayolu=@Id_Havayolu,Havayolu_Adi=@Havayolu_Adi Where Id_Havayolu=@Id_Havayolu", p) > 0;
+                using (DtbUcusEntities ctx = new DtbUcusEntities())
+                {
+                    tblHavayollari hbl = ctx.tblHavayollaris.Find(ha.Id_Havayolu);
+                    hbl.Havayolu_Adi = ha.Havayolu_Adi;
+                    ctx.Entry<tblHavayollari>(hbl).State = EntityState.Modified;
+                    ctx.SaveChanges();
+                }
+                //SqlParameter[] p = { new SqlParameter("@Id_Havayolu", ha.Id_Havayolu), new SqlParameter("@Havayolu_Adi", ha.Havayolu_Adi) };
+                //return hlp.ExecuteNonQuery("Update tblHavayollari set Id_Havayolu=@Id_Havayolu,Havayolu_Adi=@Havayolu_Adi Where Id_Havayolu=@Id_Havayolu", p) > 0;
             }
             catch (SqlException ex)
             {
@@ -73,8 +84,8 @@ namespace UcusBilgileriApp.BLL
             try
             {
                 SqlParameter[] p = { new SqlParameter("@Id_Havayolu", Id_Havayolu) };
-               SqlDataReader dr = hlp.ExecuteReader("Select Id_Havayolu,Havayolu_Adi from tblHavayollari Where Id_Havayolu=@Id_Havayolu", p);
-   
+                SqlDataReader dr = hlp.ExecuteReader("Select Id_Havayolu,Havayolu_Adi from tblHavayollari Where Id_Havayolu=@Id_Havayolu", p);
+
                 Havayolu ha = null;
 
                 if (dr.Read())
@@ -95,12 +106,20 @@ namespace UcusBilgileriApp.BLL
             }
         }
 
-        public bool HavayoluSil(string Id_Havayolu)
+        public void HavayoluSil(string Id_Havayolu)
         {
             try
             {
-                SqlParameter[] p = { new SqlParameter("@Id_Havayolu", Id_Havayolu) };
-                return hlp.ExecuteNonQuery("Delete from tblHavayollari where Id_Havayolu=@Id_Havayolu", p) > 0;
+                using (DtbUcusEntities ctx = new DtbUcusEntities())
+                {
+                    tblHavayollari hyl = ctx.tblHavayollaris.Find(Id_Havayolu);
+                    ctx.tblHavayollaris.Remove(hyl);
+                    ctx.SaveChanges();
+                }
+
+
+                //SqlParameter[] p = { new SqlParameter("@Id_Havayolu", Id_Havayolu) };
+                //return hlp.ExecuteNonQuery("Delete from tblHavayollari where Id_Havayolu=@Id_Havayolu", p) > 0;
             }
             catch (SqlException ex)
             {
@@ -177,7 +196,7 @@ namespace UcusBilgileriApp.BLL
                 throw;
             }
         }
-        public bool HavayoluEnvanterSil(string Id_Havayolu,string Id_Ucak)
+        public bool HavayoluEnvanterSil(string Id_Havayolu, string Id_Ucak)
         {
             try
             {
@@ -193,8 +212,8 @@ namespace UcusBilgileriApp.BLL
                 throw;
             }
         }
-            public DataTable HavayollariTable() => hlp.GetDataTable("Select * from tblHavayollari");
-             public DataTable HavayollariEnvanterTable() => hlp.GetDataTable("Select hy.Havayolu_Adi, u.Ucak_Adi, he.[Adet],u.Id_Ucak,hy.Id_Havayolu,he.Id_Havayolu,he.Id_Ucak from tblHavayoluEnvanter he,tblHavayollari hy,tblUcak u where he.Id_Havayolu=hy.Id_Havayolu and he.Id_Ucak=u.Id_Ucak");
+        public DataTable HavayollariTable() => hlp.GetDataTable("Select * from tblHavayollari");
+        public DataTable HavayollariEnvanterTable() => hlp.GetDataTable("Select hy.Havayolu_Adi, u.Ucak_Adi, he.[Adet],u.Id_Ucak,hy.Id_Havayolu,he.Id_Havayolu,he.Id_Ucak from tblHavayoluEnvanter he,tblHavayollari hy,tblUcak u where he.Id_Havayolu=hy.Id_Havayolu and he.Id_Ucak=u.Id_Ucak");
 
         public void Dispose()
         {

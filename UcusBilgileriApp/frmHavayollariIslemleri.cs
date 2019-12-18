@@ -36,20 +36,18 @@ namespace UcusBilgileriApp
 
                 if (id_havayolu == null)
                 {
-                    MessageBox.Show(hbl.Kaydet(ha) ? "Başarılı" : "Başarısız");
+                    hbl.Kaydet(ha);
+                    MessageBox.Show("Başarılı");
+
                 }
                 else
                 {
-                    if (hbl.Guncelle(ha))
-                    {
-                        id_havayolu = null;
-                        Temizle();
-                        MessageBox.Show("Güncelleme Başarılı");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Güncelleme Başarısız!");
-                    }
+                    hbl.Guncelle(ha);
+
+                    id_havayolu = null;
+                    Temizle();
+                    MessageBox.Show("Güncelleme Başarılı");
+
                 }
             }
             catch (SqlException ex)
@@ -61,9 +59,9 @@ namespace UcusBilgileriApp
                         break;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Bilinmeyen Hata!!");
+                MessageBox.Show("Bilinmeyen Hata!!" + ex.Message);
             }
 
         }
@@ -97,15 +95,10 @@ namespace UcusBilgileriApp
             if (cvp == DialogResult.Yes)
             {
                 HavayoluBL hbl = new HavayoluBL();
-                if (hbl.HavayoluSil(id_havayolu))
-                {
-                    MessageBox.Show("Silme Başarılı!");
-                    Temizle();
-                }
-                else
-                {
-                    MessageBox.Show("Silme hatalı!");
-                }
+                hbl.HavayoluSil(id_havayolu);
+
+                MessageBox.Show("Silme Başarılı!");
+                Temizle();
                 hbl.Dispose();
             }
             else
@@ -118,7 +111,7 @@ namespace UcusBilgileriApp
 
         private void btnVazgec_Click(object sender, EventArgs e)
         {
-            Temizle();                  
+            Temizle();
         }
     }
 }

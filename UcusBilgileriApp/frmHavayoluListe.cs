@@ -30,7 +30,7 @@ namespace UcusBilgileriApp
         }
 
         private void btnKaydet_Click(object sender, EventArgs e)
-        {
+        {        
             HavayoluBL hbl = new HavayoluBL();
 
             foreach (DataRow item in dt.Rows)

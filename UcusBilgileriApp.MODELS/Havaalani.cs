@@ -9,7 +9,6 @@ namespace UcusBilgileriApp.MODELS
     public class Havaalani
     {
         public string Id_Yer { get; set; }
-        public string Id_Yer2 { get; set; }
         public string Yer_Adi { get; set; }
     }
 }

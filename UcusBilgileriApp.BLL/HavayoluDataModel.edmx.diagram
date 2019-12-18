@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e811795091d74bf6a23b3f756b1d3d9f" Name="Diagram1">
+        <EntityTypeShape EntityType="DtbUcusModel.sysdiagram" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DtbUcusModel.tblHavayollari" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="DtbUcusModel.tblKalkisVari" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DtbUcusModel.tblUcak" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DtbUcusModel.tblUcusBilgileri" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DtbUcusModel.tblYolcular" Width="1.5" PointX="5.25" PointY="2.125" IsExpanded="true" />
+        <AssociationConnector Association="DtbUcusModel.FK_tblHavayollari_tblHavayollari" ManuallyRouted="false" />
+        <AssociationConnector Association="DtbUcusModel.FK_tblUcusBilgileri_tblHavayollari" ManuallyRouted="false" />
+        <AssociationConnector Association="DtbUcusModel.FK_tblUcusBilgileri_tblUcak" ManuallyRouted="false" />
+        <AssociationConnector Association="DtbUcusModel.FK_tblUcusBilgileri_tblUcusBilgileri" ManuallyRouted="false" />
+        <AssociationConnector Association="DtbUcusModel.FK_tblYolcular_tblUcusBilgileri" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

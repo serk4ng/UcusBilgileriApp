@@ -16,11 +16,11 @@ namespace UcusBilgileriApp.BLL
 
         public List<Havaalani> HavaalaniListesi()
         {
-            SqlDataReader dr = hlp.ExecuteReader("Select Id_Yer,Id_Yer2,Yer_Adi from tblKalkisVaris", null);
+            SqlDataReader dr = hlp.ExecuteReader("Select Id_Yer,Yer_Adi from tblKalkisVaris", null);
             List<Havaalani> lst = new List<Havaalani>();
             while (dr.Read())
             {
-                lst.Add(new Havaalani { Id_Yer = dr["Id_Yer"].ToString(), Id_Yer2 = dr["Id_Yer2"].ToString(), Yer_Adi = dr["Yer_Adi"].ToString() });
+                lst.Add(new Havaalani { Id_Yer = dr["Id_Yer"].ToString(), Yer_Adi = dr["Yer_Adi"].ToString() });
             }
             lst.Insert(0, new Havaalani { Yer_Adi = "Havaalanı Seçiniz" });
             dr.Close();
@@ -45,9 +45,9 @@ namespace UcusBilgileriApp.BLL
 
             try
             {
-                string cmdtext = "Insert into tblKalkisVaris values(@Id_Yer,@Id_Yer2,@Yer_Adi)";
+                string cmdtext = "Insert into tblKalkisVaris values(@Id_Yer,@Yer_Adi)";
 
-                SqlParameter[] p = { new SqlParameter("@Id_Yer", ha.Id_Yer), new SqlParameter("@Id_Yer2", ha.Id_Yer), new SqlParameter("@Yer_Adi", ha.Yer_Adi) };
+                SqlParameter[] p = { new SqlParameter("@Id_Yer", ha.Id_Yer), new SqlParameter("@Yer_Adi", ha.Yer_Adi) };
                 return hlp.ExecuteNonQuery(cmdtext, p) > 0;
             }
             catch (SqlException ex)

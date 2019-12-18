@@ -1,0 +1,425 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DtbUcusModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tblHavayollari">
+          <Key>
+            <PropertyRef Name="Id_Havayolu" />
+          </Key>
+          <Property Name="Id_Havayolu" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Havayolu_Adi" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'DtbUcus.dbo.tblHavayoluEnvanter' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tblHavayoluEnvanter">
+          <Property Name="Id_Havayolu" Type="nvarchar" MaxLength="10" />
+          <Property Name="Id_Ucak" Type="nvarchar" MaxLength="10" />
+          <Property Name="Adet" Type="int" />
+        </EntityType>-->
+        <EntityType Name="tblKalkisVaris">
+          <Key>
+            <PropertyRef Name="Id_Yer" />
+          </Key>
+          <Property Name="Id_Yer" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Id_Yer2" Type="nvarchar" MaxLength="10" />
+          <Property Name="Yer_Adi" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblUcak">
+          <Key>
+            <PropertyRef Name="Id_Ucak" />
+          </Key>
+          <Property Name="Id_Ucak" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Ucak_Adi" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Yolcu_Sayisi" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblUcusBilgileri">
+          <Key>
+            <PropertyRef Name="Ucus_Numarasi" />
+          </Key>
+          <Property Name="Ucus_Numarasi" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Id_Havayolu" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Kalkis_Yeri_Id" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Varis_Yeri_Id" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Kalkis_Tarih" Type="date" Nullable="false" />
+          <Property Name="Kalkis_Saat" Type="time" Precision="0" Nullable="false" />
+          <Property Name="Varis_Tarih" Type="date" Nullable="false" />
+          <Property Name="Varis_Saat" Type="time" Precision="0" Nullable="false" />
+          <Property Name="Tahmini_Sure" Type="time" Precision="0" Nullable="false" />
+          <Property Name="Id_Ucak" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DtbUcus.dbo.tblYolcular' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tblYolcular">
+          <Key>
+            <PropertyRef Name="Ad" />
+            <PropertyRef Name="Soyad" />
+            <PropertyRef Name="Ucus_Numarasi" />
+          </Key>
+          <Property Name="Ad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Soyad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Ucus_Numarasi" Type="nvarchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_tblHavayollari_tblHavayollari">
+          <End Role="tblHavayollari" Type="Self.tblHavayollari" Multiplicity="1" />
+          <End Role="tblHavayollari1" Type="Self.tblHavayollari" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblHavayollari">
+              <PropertyRef Name="Id_Havayolu" />
+            </Principal>
+            <Dependent Role="tblHavayollari1">
+              <PropertyRef Name="Id_Havayolu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+error 6004: The table 'DtbUcus.dbo.tblHavayoluEnvanter' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_tblHavayoluEnvanter_tblHavayollari" />-->
+        <!--Errors Found During Generation:
+error 6004: The table 'DtbUcus.dbo.tblHavayoluEnvanter' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_tblHavayoluEnvanter_tblUcak" />-->
+        <Association Name="FK_tblUcusBilgileri_tblHavayollari">
+          <End Role="tblHavayollari" Type="Self.tblHavayollari" Multiplicity="1" />
+          <End Role="tblUcusBilgileri" Type="Self.tblUcusBilgileri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblHavayollari">
+              <PropertyRef Name="Id_Havayolu" />
+            </Principal>
+            <Dependent Role="tblUcusBilgileri">
+              <PropertyRef Name="Id_Havayolu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUcusBilgileri_tblUcak">
+          <End Role="tblUcak" Type="Self.tblUcak" Multiplicity="1" />
+          <End Role="tblUcusBilgileri" Type="Self.tblUcusBilgileri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUcak">
+              <PropertyRef Name="Id_Ucak" />
+            </Principal>
+            <Dependent Role="tblUcusBilgileri">
+              <PropertyRef Name="Id_Ucak" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUcusBilgileri_tblUcusBilgileri">
+          <End Role="tblUcusBilgileri" Type="Self.tblUcusBilgileri" Multiplicity="1" />
+          <End Role="tblUcusBilgileri1" Type="Self.tblUcusBilgileri" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblUcusBilgileri">
+              <PropertyRef Name="Ucus_Numarasi" />
+            </Principal>
+            <Dependent Role="tblUcusBilgileri1">
+              <PropertyRef Name="Ucus_Numarasi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblYolcular_tblUcusBilgileri">
+          <End Role="tblUcusBilgileri" Type="Self.tblUcusBilgileri" Multiplicity="1" />
+          <End Role="tblYolcular" Type="Self.tblYolcular" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUcusBilgileri">
+              <PropertyRef Name="Ucus_Numarasi" />
+            </Principal>
+            <Dependent Role="tblYolcular">
+              <PropertyRef Name="Ucus_Numarasi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DtbUcusModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblHavayollari" EntityType="Self.tblHavayollari" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblKalkisVaris" EntityType="Self.tblKalkisVaris" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUcak" EntityType="Self.tblUcak" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUcusBilgileri" EntityType="Self.tblUcusBilgileri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblYolcular" EntityType="Self.tblYolcular" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tblYolcular].[Ad] AS [Ad], 
+    [tblYolcular].[Soyad] AS [Soyad], 
+    [tblYolcular].[Ucus_Numarasi] AS [Ucus_Numarasi]
+    FROM [dbo].[tblYolcular] AS [tblYolcular]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_tblHavayollari_tblHavayollari" Association="Self.FK_tblHavayollari_tblHavayollari">
+            <End Role="tblHavayollari" EntitySet="tblHavayollari" />
+            <End Role="tblHavayollari1" EntitySet="tblHavayollari" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUcusBilgileri_tblHavayollari" Association="Self.FK_tblUcusBilgileri_tblHavayollari">
+            <End Role="tblHavayollari" EntitySet="tblHavayollari" />
+            <End Role="tblUcusBilgileri" EntitySet="tblUcusBilgileri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUcusBilgileri_tblUcak" Association="Self.FK_tblUcusBilgileri_tblUcak">
+            <End Role="tblUcak" EntitySet="tblUcak" />
+            <End Role="tblUcusBilgileri" EntitySet="tblUcusBilgileri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUcusBilgileri_tblUcusBilgileri" Association="Self.FK_tblUcusBilgileri_tblUcusBilgileri">
+            <End Role="tblUcusBilgileri" EntitySet="tblUcusBilgileri" />
+            <End Role="tblUcusBilgileri1" EntitySet="tblUcusBilgileri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblYolcular_tblUcusBilgileri" Association="Self.FK_tblYolcular_tblUcusBilgileri">
+            <End Role="tblUcusBilgileri" EntitySet="tblUcusBilgileri" />
+            <End Role="tblYolcular" EntitySet="tblYolcular" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DtbUcusModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblHavayollari">
+          <Key>
+            <PropertyRef Name="Id_Havayolu" />
+          </Key>
+          <Property Name="Id_Havayolu" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Havayolu_Adi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tblHavayollari1" Relationship="Self.FK_tblHavayollari_tblHavayollari" FromRole="tblHavayollari" ToRole="tblHavayollari1" />
+          <NavigationProperty Name="tblHavayollari2" Relationship="Self.FK_tblHavayollari_tblHavayollari" FromRole="tblHavayollari1" ToRole="tblHavayollari" />
+          <NavigationProperty Name="tblUcusBilgileris" Relationship="Self.FK_tblUcusBilgileri_tblHavayollari" FromRole="tblHavayollari" ToRole="tblUcusBilgileri" />
+        </EntityType>
+        <EntityType Name="tblKalkisVari">
+          <Key>
+            <PropertyRef Name="Id_Yer" />
+          </Key>
+          <Property Name="Id_Yer" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Yer_Adi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblUcak">
+          <Key>
+            <PropertyRef Name="Id_Ucak" />
+          </Key>
+          <Property Name="Id_Ucak" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ucak_Adi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Yolcu_Sayisi" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblUcusBilgileris" Relationship="Self.FK_tblUcusBilgileri_tblUcak" FromRole="tblUcak" ToRole="tblUcusBilgileri" />
+        </EntityType>
+        <EntityType Name="tblUcusBilgileri">
+          <Key>
+            <PropertyRef Name="Ucus_Numarasi" />
+          </Key>
+          <Property Name="Ucus_Numarasi" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Id_Havayolu" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Kalkis_Yeri_Id" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Varis_Yeri_Id" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Kalkis_Tarih" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Kalkis_Saat" Type="Time" Nullable="false" Precision="0" />
+          <Property Name="Varis_Tarih" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Varis_Saat" Type="Time" Nullable="false" Precision="0" />
+          <Property Name="Tahmini_Sure" Type="Time" Nullable="false" Precision="0" />
+          <Property Name="Id_Ucak" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tblHavayollari" Relationship="Self.FK_tblUcusBilgileri_tblHavayollari" FromRole="tblUcusBilgileri" ToRole="tblHavayollari" />
+          <NavigationProperty Name="tblUcak" Relationship="Self.FK_tblUcusBilgileri_tblUcak" FromRole="tblUcusBilgileri" ToRole="tblUcak" />
+          <NavigationProperty Name="tblUcusBilgileri1" Relationship="Self.FK_tblUcusBilgileri_tblUcusBilgileri" FromRole="tblUcusBilgileri" ToRole="tblUcusBilgileri1" />
+          <NavigationProperty Name="tblUcusBilgileri2" Relationship="Self.FK_tblUcusBilgileri_tblUcusBilgileri" FromRole="tblUcusBilgileri1" ToRole="tblUcusBilgileri" />
+          <NavigationProperty Name="tblYolculars" Relationship="Self.FK_tblYolcular_tblUcusBilgileri" FromRole="tblUcusBilgileri" ToRole="tblYolcular" />
+        </EntityType>
+        <EntityType Name="tblYolcular">
+          <Key>
+            <PropertyRef Name="Ad" />
+            <PropertyRef Name="Soyad" />
+            <PropertyRef Name="Ucus_Numarasi" />
+          </Key>
+          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ucus_Numarasi" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tblUcusBilgileri" Relationship="Self.FK_tblYolcular_tblUcusBilgileri" FromRole="tblYolcular" ToRole="tblUcusBilgileri" />
+        </EntityType>
+        <Association Name="FK_tblHavayollari_tblHavayollari">
+          <End Role="tblHavayollari" Type="Self.tblHavayollari" Multiplicity="1" />
+          <End Role="tblHavayollari1" Type="Self.tblHavayollari" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblHavayollari">
+              <PropertyRef Name="Id_Havayolu" />
+            </Principal>
+            <Dependent Role="tblHavayollari1">
+              <PropertyRef Name="Id_Havayolu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUcusBilgileri_tblHavayollari">
+          <End Role="tblHavayollari" Type="Self.tblHavayollari" Multiplicity="1" />
+          <End Role="tblUcusBilgileri" Type="Self.tblUcusBilgileri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblHavayollari">
+              <PropertyRef Name="Id_Havayolu" />
+            </Principal>
+            <Dependent Role="tblUcusBilgileri">
+              <PropertyRef Name="Id_Havayolu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUcusBilgileri_tblUcak">
+          <End Role="tblUcak" Type="Self.tblUcak" Multiplicity="1" />
+          <End Role="tblUcusBilgileri" Type="Self.tblUcusBilgileri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUcak">
+              <PropertyRef Name="Id_Ucak" />
+            </Principal>
+            <Dependent Role="tblUcusBilgileri">
+              <PropertyRef Name="Id_Ucak" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUcusBilgileri_tblUcusBilgileri">
+          <End Role="tblUcusBilgileri" Type="Self.tblUcusBilgileri" Multiplicity="1" />
+          <End Role="tblUcusBilgileri1" Type="Self.tblUcusBilgileri" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblUcusBilgileri">
+              <PropertyRef Name="Ucus_Numarasi" />
+            </Principal>
+            <Dependent Role="tblUcusBilgileri1">
+              <PropertyRef Name="Ucus_Numarasi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblYolcular_tblUcusBilgileri">
+          <End Role="tblUcusBilgileri" Type="Self.tblUcusBilgileri" Multiplicity="1" />
+          <End Role="tblYolcular" Type="Self.tblYolcular" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUcusBilgileri">
+              <PropertyRef Name="Ucus_Numarasi" />
+            </Principal>
+            <Dependent Role="tblYolcular">
+              <PropertyRef Name="Ucus_Numarasi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DtbUcusEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="tblHavayollaris" EntityType="Self.tblHavayollari" />
+          <EntitySet Name="tblKalkisVaris" EntityType="Self.tblKalkisVari" />
+          <EntitySet Name="tblUcaks" EntityType="Self.tblUcak" />
+          <EntitySet Name="tblUcusBilgileris" EntityType="Self.tblUcusBilgileri" />
+          <EntitySet Name="tblYolculars" EntityType="Self.tblYolcular" />
+          <AssociationSet Name="FK_tblHavayollari_tblHavayollari" Association="Self.FK_tblHavayollari_tblHavayollari">
+            <End Role="tblHavayollari" EntitySet="tblHavayollaris" />
+            <End Role="tblHavayollari1" EntitySet="tblHavayollaris" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUcusBilgileri_tblHavayollari" Association="Self.FK_tblUcusBilgileri_tblHavayollari">
+            <End Role="tblHavayollari" EntitySet="tblHavayollaris" />
+            <End Role="tblUcusBilgileri" EntitySet="tblUcusBilgileris" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUcusBilgileri_tblUcak" Association="Self.FK_tblUcusBilgileri_tblUcak">
+            <End Role="tblUcak" EntitySet="tblUcaks" />
+            <End Role="tblUcusBilgileri" EntitySet="tblUcusBilgileris" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUcusBilgileri_tblUcusBilgileri" Association="Self.FK_tblUcusBilgileri_tblUcusBilgileri">
+            <End Role="tblUcusBilgileri" EntitySet="tblUcusBilgileris" />
+            <End Role="tblUcusBilgileri1" EntitySet="tblUcusBilgileris" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblYolcular_tblUcusBilgileri" Association="Self.FK_tblYolcular_tblUcusBilgileri">
+            <End Role="tblUcusBilgileri" EntitySet="tblUcusBilgileris" />
+            <End Role="tblYolcular" EntitySet="tblYolculars" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DtbUcusModelStoreContainer" CdmEntityContainer="DtbUcusEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DtbUcusModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblHavayollaris">
+            <EntityTypeMapping TypeName="DtbUcusModel.tblHavayollari">
+              <MappingFragment StoreEntitySet="tblHavayollari">
+                <ScalarProperty Name="Id_Havayolu" ColumnName="Id_Havayolu" />
+                <ScalarProperty Name="Havayolu_Adi" ColumnName="Havayolu_Adi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblKalkisVaris">
+            <EntityTypeMapping TypeName="DtbUcusModel.tblKalkisVari">
+              <MappingFragment StoreEntitySet="tblKalkisVaris">
+                <ScalarProperty Name="Id_Yer" ColumnName="Id_Yer" />
+                <ScalarProperty Name="Yer_Adi" ColumnName="Yer_Adi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUcaks">
+            <EntityTypeMapping TypeName="DtbUcusModel.tblUcak">
+              <MappingFragment StoreEntitySet="tblUcak">
+                <ScalarProperty Name="Id_Ucak" ColumnName="Id_Ucak" />
+                <ScalarProperty Name="Ucak_Adi" ColumnName="Ucak_Adi" />
+                <ScalarProperty Name="Yolcu_Sayisi" ColumnName="Yolcu_Sayisi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUcusBilgileris">
+            <EntityTypeMapping TypeName="DtbUcusModel.tblUcusBilgileri">
+              <MappingFragment StoreEntitySet="tblUcusBilgileri">
+                <ScalarProperty Name="Ucus_Numarasi" ColumnName="Ucus_Numarasi" />
+                <ScalarProperty Name="Id_Havayolu" ColumnName="Id_Havayolu" />
+                <ScalarProperty Name="Kalkis_Yeri_Id" ColumnName="Kalkis_Yeri_Id" />
+                <ScalarProperty Name="Varis_Yeri_Id" ColumnName="Varis_Yeri_Id" />
+                <ScalarProperty Name="Kalkis_Tarih" ColumnName="Kalkis_Tarih" />
+                <ScalarProperty Name="Kalkis_Saat" ColumnName="Kalkis_Saat" />
+                <ScalarProperty Name="Varis_Tarih" ColumnName="Varis_Tarih" />
+                <ScalarProperty Name="Varis_Saat" ColumnName="Varis_Saat" />
+                <ScalarProperty Name="Tahmini_Sure" ColumnName="Tahmini_Sure" />
+                <ScalarProperty Name="Id_Ucak" ColumnName="Id_Ucak" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblYolculars">
+            <EntityTypeMapping TypeName="DtbUcusModel.tblYolcular">
+              <MappingFragment StoreEntitySet="tblYolcular">
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="Ucus_Numarasi" ColumnName="Ucus_Numarasi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
