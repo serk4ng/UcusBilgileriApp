@@ -18,6 +18,7 @@ namespace UcusBilgileriApp.DAL//Data Access Layer
             try
             {
                 cmd = new SqlCommand(cmdtext, cn);
+
                 if (p != null)
                 {
                     cmd.Parameters.AddRange(p);
@@ -37,12 +38,15 @@ namespace UcusBilgileriApp.DAL//Data Access Layer
             try
             {
                 cmd = new SqlCommand(cmdtext, cn);
+
                 if (p != null)
                 {
                     cmd.Parameters.AddRange(p);
                 }
                 OpenConnection();
+
                 SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                cmd.CommandType = CommandType.StoredProcedure;
                 return dr;
             }
             catch (Exception)
@@ -54,7 +58,7 @@ namespace UcusBilgileriApp.DAL//Data Access Layer
         public DataTable GetDataTable(string cmdtext)
         {
             SqlDataAdapter da = new SqlDataAdapter(cmdtext, cn);
-            DataTable dt = new DataTable();
+            DataTable dt = new DataTable();           
             da.Fill(dt);
             return dt;
         }

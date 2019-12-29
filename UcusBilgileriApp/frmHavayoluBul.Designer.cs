@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHavayoluBul));
             this.label1 = new System.Windows.Forms.Label();
             this.btnBul = new System.Windows.Forms.Button();
             this.cmbHavayolu = new System.Windows.Forms.ComboBox();
@@ -36,7 +37,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 54);
+            this.label1.Location = new System.Drawing.Point(12, 32);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(95, 13);
             this.label1.TabIndex = 1;
@@ -44,7 +45,7 @@
             // 
             // btnBul
             // 
-            this.btnBul.Location = new System.Drawing.Point(136, 91);
+            this.btnBul.Location = new System.Drawing.Point(132, 56);
             this.btnBul.Name = "btnBul";
             this.btnBul.Size = new System.Drawing.Size(75, 23);
             this.btnBul.TabIndex = 2;
@@ -55,7 +56,7 @@
             // cmbHavayolu
             // 
             this.cmbHavayolu.FormattingEnabled = true;
-            this.cmbHavayolu.Location = new System.Drawing.Point(113, 51);
+            this.cmbHavayolu.Location = new System.Drawing.Point(113, 29);
             this.cmbHavayolu.Name = "cmbHavayolu";
             this.cmbHavayolu.Size = new System.Drawing.Size(121, 21);
             this.cmbHavayolu.TabIndex = 3;
@@ -64,6 +65,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(382, 199);
             this.Controls.Add(this.cmbHavayolu);
             this.Controls.Add(this.btnBul);

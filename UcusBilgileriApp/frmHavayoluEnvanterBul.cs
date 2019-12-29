@@ -43,8 +43,12 @@ namespace UcusBilgileriApp
             }
             else
             {
+                UcakBL ubl = new UcakBL();
                 u = new Ucak();
+                
                 frm.cmbHavayolu.SelectedValue = ha.Id_Havayolu;
+                frm.cmbHavayolu.DisplayMember = "Havayolu_Adi";
+                frm.cmbHavayolu.ValueMember = "Id_Havayolu";
                 frm.cmbUcak.SelectedValue = ha.Havayolu_Adi;
                 frm.cmbAdet.SelectedValue = u.Adet.ToString();
                 frm.id_havayolu = cmbHavayolu.SelectedValue.ToString();
@@ -53,13 +57,14 @@ namespace UcusBilgileriApp
                 frm.cmbHavayolu.Enabled = false;
                 frm.btnEkle.Text = "Guncelle";
 
-                UcakBL ubl = new UcakBL();
+                 ubl = new UcakBL();
                 frm.cmbUcak.DisplayMember = "Ucak_Adi";
                 frm.cmbUcak.ValueMember = "Id_Ucak";
                 frm.cmbAdet.DisplayMember = "Adet";
-                frm.cmbAdet.ValueMember = "Adet";
-                frm.cmbUcak.DataSource = ubl.HavayoluEnvanterListesi(ha.Id_Havayolu);
-                frm.cmbAdet.DataSource = ubl.HavayoluEnvanterListesi(ha.Id_Havayolu);
+                frm.cmbAdet.ValueMember = "Adet";       
+                frm.cmbUcak.DataSource = ubl.UcakEnvanterListesi(ha.Id_Havayolu);
+                frm.cmbAdet.DataSource = ubl.UcakEnvanterListesi(ha.Id_Havayolu);
+                this.Close();
 
             }
         }

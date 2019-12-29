@@ -33,6 +33,7 @@
             this.clmAd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmSoyad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmUcusNumarasi = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.clmKoltukNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grdYolcular)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,7 +44,8 @@
             this.grdYolcular.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmAd,
             this.clmSoyad,
-            this.clmUcusNumarasi});
+            this.clmUcusNumarasi,
+            this.clmKoltukNo});
             this.grdYolcular.Dock = System.Windows.Forms.DockStyle.Top;
             this.grdYolcular.Location = new System.Drawing.Point(0, 0);
             this.grdYolcular.Name = "grdYolcular";
@@ -82,6 +84,12 @@
             this.clmUcusNumarasi.HeaderText = "Ucus_Numarasi";
             this.clmUcusNumarasi.Name = "clmUcusNumarasi";
             // 
+            // clmKoltukNo
+            // 
+            this.clmKoltukNo.DataPropertyName = "Koltuk_No";
+            this.clmKoltukNo.HeaderText = "Koltuk No";
+            this.clmKoltukNo.Name = "clmKoltukNo";
+            // 
             // frmYolcuListele
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -104,5 +112,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clmAd;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmSoyad;
         private System.Windows.Forms.DataGridViewComboBoxColumn clmUcusNumarasi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmKoltukNo;
     }
 }

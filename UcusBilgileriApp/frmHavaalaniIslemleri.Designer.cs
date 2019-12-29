@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHavaalaniIslemleri));
             this.txtHavaalaniID = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.txtHavaalaniAdi = new System.Windows.Forms.TextBox();
@@ -126,6 +127,7 @@
             // 
             // pnlText
             // 
+            this.pnlText.BackColor = System.Drawing.Color.Transparent;
             this.pnlText.Controls.Add(this.txtHavaalaniID);
             this.pnlText.Controls.Add(this.txtHavaalaniAdi);
             this.pnlText.Location = new System.Drawing.Point(138, 55);
@@ -139,6 +141,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.pnlText);
             this.Controls.Add(this.btnSil);

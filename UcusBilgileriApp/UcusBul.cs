@@ -59,6 +59,7 @@ namespace UcusBilgileriApp
                     frm.lblUcusNo.Cursor = Cursors.No;
                     frm.txtUcusNumara.Enabled = false;
                     frm.btnKaydet.Text = "Guncelle";
+                    this.Close();
 
                 }
             }

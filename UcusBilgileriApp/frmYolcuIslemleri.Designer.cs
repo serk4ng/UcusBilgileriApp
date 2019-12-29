@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmYolcuIslemleri));
             this.btnEkle = new System.Windows.Forms.Button();
             this.btnBul = new System.Windows.Forms.Button();
             this.btnVazgec = new System.Windows.Forms.Button();
@@ -39,12 +40,14 @@
             this.pnlText = new System.Windows.Forms.Panel();
             this.cmbAd = new System.Windows.Forms.ComboBox();
             this.cmbSoyad = new System.Windows.Forms.ComboBox();
+            this.txtKoltukNo = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.pnlText.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnEkle
             // 
-            this.btnEkle.Location = new System.Drawing.Point(133, 170);
+            this.btnEkle.Location = new System.Drawing.Point(134, 187);
             this.btnEkle.Name = "btnEkle";
             this.btnEkle.Size = new System.Drawing.Size(85, 29);
             this.btnEkle.TabIndex = 0;
@@ -54,7 +57,7 @@
             // 
             // btnBul
             // 
-            this.btnBul.Location = new System.Drawing.Point(133, 216);
+            this.btnBul.Location = new System.Drawing.Point(134, 233);
             this.btnBul.Name = "btnBul";
             this.btnBul.Size = new System.Drawing.Size(85, 31);
             this.btnBul.TabIndex = 1;
@@ -64,7 +67,7 @@
             // 
             // btnVazgec
             // 
-            this.btnVazgec.Location = new System.Drawing.Point(261, 170);
+            this.btnVazgec.Location = new System.Drawing.Point(262, 187);
             this.btnVazgec.Name = "btnVazgec";
             this.btnVazgec.Size = new System.Drawing.Size(85, 29);
             this.btnVazgec.TabIndex = 2;
@@ -77,7 +80,7 @@
             // 
             this.btnSil.BackColor = System.Drawing.Color.Red;
             this.btnSil.Font = new System.Drawing.Font("Monotype Corsiva", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnSil.Location = new System.Drawing.Point(250, 216);
+            this.btnSil.Location = new System.Drawing.Point(251, 233);
             this.btnSil.Name = "btnSil";
             this.btnSil.Size = new System.Drawing.Size(104, 31);
             this.btnSil.TabIndex = 3;
@@ -123,11 +126,13 @@
             // 
             // pnlText
             // 
+            this.pnlText.BackColor = System.Drawing.Color.Transparent;
+            this.pnlText.Controls.Add(this.txtKoltukNo);
             this.pnlText.Controls.Add(this.cmbAd);
             this.pnlText.Controls.Add(this.cmbSoyad);
             this.pnlText.Location = new System.Drawing.Point(133, 89);
             this.pnlText.Name = "pnlText";
-            this.pnlText.Size = new System.Drawing.Size(157, 52);
+            this.pnlText.Size = new System.Drawing.Size(157, 82);
             this.pnlText.TabIndex = 10;
             // 
             // cmbAd
@@ -148,11 +153,30 @@
             this.cmbSoyad.TabIndex = 12;
             this.cmbSoyad.SelectedIndexChanged += new System.EventHandler(this.cmbSoyad_SelectedIndexChanged);
             // 
+            // txtKoltukNo
+            // 
+            this.txtKoltukNo.Location = new System.Drawing.Point(4, 55);
+            this.txtKoltukNo.Name = "txtKoltukNo";
+            this.txtKoltukNo.Size = new System.Drawing.Size(100, 20);
+            this.txtKoltukNo.TabIndex = 11;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(71, 147);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(60, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Koltuk No :";
+            // 
             // frmYolcuIslemleri
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.pnlText);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -166,6 +190,7 @@
             this.Text = "frmYolcuIslemleri";
             this.Load += new System.EventHandler(this.frmYolcuIslemleri_Load);
             this.pnlText.ResumeLayout(false);
+            this.pnlText.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -183,5 +208,7 @@
         public System.Windows.Forms.ComboBox cmbAd;
         public System.Windows.Forms.ComboBox cmbSoyad;
         public System.Windows.Forms.Panel pnlText;
+        private System.Windows.Forms.Label label4;
+        public System.Windows.Forms.TextBox txtKoltukNo;
     }
 }

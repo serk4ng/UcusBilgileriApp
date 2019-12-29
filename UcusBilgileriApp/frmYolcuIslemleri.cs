@@ -45,6 +45,7 @@ namespace UcusBilgileriApp
             cmbUcusNumarasi.SelectedIndex = 0;
             cmbAd.Enabled = true;
             cmbSoyad.Enabled = true;
+            txtKoltukNo.Clear();
             
 
 
@@ -67,6 +68,7 @@ namespace UcusBilgileriApp
                 y.Ad = cmbAd.Text.Trim();
                 y.Soyad = cmbSoyad.Text.Trim();
                 y.Ucus_Numarasi = cmbUcusNumarasi.Text.Trim();
+                y.Koltuk_No = txtKoltukNo.Text.Trim();
 
                 if (ucus_numarasi == null)
                 {
@@ -155,13 +157,13 @@ namespace UcusBilgileriApp
         private void cmbAd_SelectedIndexChanged(object sender, EventArgs e)
         {
             int indexad = cmbAd.SelectedIndex;
+            int indexsoyad = cmbSoyad.SelectedIndex;
 
-            if (indexad != 0)
+            if (indexad != 0 && indexsoyad !=0)
             {
                cmbSoyad.SelectedIndex = indexad;
-                cmbUcusNumarasi.SelectedIndex = indexad;
-            }
-           
+               cmbUcusNumarasi.SelectedIndex = indexad;
+            }       
         }
 
         private void cmbSoyad_SelectedIndexChanged(object sender, EventArgs e)

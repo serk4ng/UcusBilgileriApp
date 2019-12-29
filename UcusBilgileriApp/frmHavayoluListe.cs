@@ -47,16 +47,16 @@ namespace UcusBilgileriApp
                 {
                     case DataRowState.Added:
                         hbl.Kaydet(h);
-                        MessageBox.Show("Eklendi");
+                        MessageBox.Show(item[0] + " ID'li Havayolu Eklendi");
                         break;
                     case DataRowState.Deleted:
                         hbl.HavayoluSil((string)(item[0, DataRowVersion.Original]));
-                        MessageBox.Show("Silindi");
+                        MessageBox.Show(item[0, DataRowVersion.Original] +" ID'li Havayolu Silindi");
                         break;
                     case DataRowState.Modified:
                         h.Id_Havayolu = item[0].ToString();
                         hbl.Guncelle(h);
-                        MessageBox.Show("Guncellendi");
+                        MessageBox.Show(item[0, DataRowVersion.Original] + " ID'li Havayolu Guncellendi");
                         break;
                     default:
                         break;

@@ -25,11 +25,11 @@ namespace UcusBilgileriApp.BLL
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<tblHavayollari> tblHavayollaris { get; set; }
-        public virtual DbSet<tblKalkisVari> tblKalkisVaris { get; set; }
-        public virtual DbSet<tblUcak> tblUcaks { get; set; }
-        public virtual DbSet<tblUcusBilgileri> tblUcusBilgileris { get; set; }
-        public virtual DbSet<tblYolcular> tblYolculars { get; set; }
+        public  DbSet<sysdiagram> sysdiagrams { get; set; }
+        public  DbSet<tblHavayollari> tblHavayollaris { get; set; }
+        public  DbSet<tblKalkisVari> tblKalkisVaris { get; set; }
+        public  DbSet<tblUcak> tblUcaks { get; set; }
+        public  DbSet<tblUcusBilgileri> tblUcusBilgileris { get; set; }
+        public  DbSet<tblYolcular> tblYolculars { get; set; }
     }
 }

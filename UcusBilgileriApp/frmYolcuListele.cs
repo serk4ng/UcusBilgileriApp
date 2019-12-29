@@ -48,23 +48,26 @@ namespace UcusBilgileriApp
                     y.Ad = item[0].ToString();
                     y.Soyad = item[1].ToString();
                     y.Ucus_Numarasi = item[2].ToString();
+                    y.Koltuk_No = item[3].ToString();
                 }
 
                 switch (item.RowState)
                 {
                     case DataRowState.Added:
                         ybl.YolcuKaydet(y);
-                        MessageBox.Show("Eklendi");
+                        MessageBox.Show(item[0].ToString()+" "+ item[1].ToString() + " Kisisi Eklendi");
                         break;
                     case DataRowState.Deleted:
                         ybl.YolcuSil((string)(item[0, DataRowVersion.Original]), (string)(item[1, DataRowVersion.Original]));
-                        MessageBox.Show("Silindi");
+                        MessageBox.Show(item[0,DataRowVersion.Original].ToString()+ " " + item[1, DataRowVersion.Original].ToString() + " Kisisi Silindi");
                         break;
                     case DataRowState.Modified:
                         y.Ad = item[0].ToString();
                         y.Soyad = item[1].ToString();
+                        y.Ucus_Numarasi = item[2].ToString();
+                        y.Koltuk_No = item[3].ToString();
                         ybl.YolcuGuncelle(y);
-                        MessageBox.Show("Guncellendi");
+                        MessageBox.Show(item[0].ToString() + " " + item[1].ToString() + " Kisisi Guncellendi");
                         break;
                     default:
                         break;

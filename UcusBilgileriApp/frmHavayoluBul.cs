@@ -47,6 +47,7 @@ namespace UcusBilgileriApp
                 frm.lblHavaalaniID.Cursor = Cursors.No;
                 frm.txtHavayoluID.Enabled = false;
                 frm.btnEkle.Text = "Guncelle";
+                this.Close();
             }
 
 

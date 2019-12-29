@@ -127,5 +127,10 @@ namespace UcusBilgileriApp
             frm.Show();
             
         }
+
+        private void menuStrip1_MouseMove(object sender, MouseEventArgs e)
+        {
+            menuStrip1.Cursor = Cursors.Hand;
+        }
     }
 }

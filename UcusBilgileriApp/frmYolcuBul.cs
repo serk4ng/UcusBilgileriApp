@@ -57,14 +57,13 @@ namespace UcusBilgileriApp
                 frm.ad = y.Ad;
                 frm.soyad = y.Soyad;
                 frm.ucus_numarasi = y.Ucus_Numarasi;
+                frm.txtKoltukNo.Text = y.Koltuk_No;
                 frm.cmbAd.Enabled = false;
                 frm.cmbSoyad.Enabled = false;
                 frm.btnVazgec.Visible = true;
                 frm.btnSil.Visible = true;
                 frm.btnEkle.Text = "Guncelle";
-
-
-    
+                this.Close();
 
             }
         }

@@ -217,7 +217,6 @@ namespace UcusBilgileriApp
                     cmbAdet.SelectedIndex = ucakindex;
                 }
 
-
             }
          
         }

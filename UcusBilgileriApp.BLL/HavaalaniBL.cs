@@ -16,7 +16,7 @@ namespace UcusBilgileriApp.BLL
 
         public List<Havaalani> HavaalaniListesi()
         {
-            SqlDataReader dr = hlp.ExecuteReader("Select Id_Yer,Yer_Adi from tblKalkisVaris", null);
+            SqlDataReader dr = hlp.ExecuteReader("spHavaalanlari", null);
             List<Havaalani> lst = new List<Havaalani>();
             while (dr.Read())
             {
@@ -29,7 +29,7 @@ namespace UcusBilgileriApp.BLL
 
         public List<Havaalani> HavaalaniDataGridListesi()
         {
-            SqlDataReader dr = hlp.ExecuteReader("Select Id_Yer,Yer_Adi from tblKalkisVaris", null);
+            SqlDataReader dr = hlp.ExecuteReader("spHavaalanlari", null);
             List<Havaalani> lst = new List<Havaalani>();
             while (dr.Read())
             {
@@ -121,7 +121,7 @@ namespace UcusBilgileriApp.BLL
             }
         }
 
-        public DataTable HavaalanlariTable() => hlp.GetDataTable("Select * from tblKalkisVaris");
+        public DataTable HavaalanlariTable() => hlp.GetDataTable("spHavaalanlari");
 
         public void Dispose()
         {

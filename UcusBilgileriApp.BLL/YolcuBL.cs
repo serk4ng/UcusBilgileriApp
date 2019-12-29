@@ -16,12 +16,12 @@ namespace UcusBilgileriApp.BLL
 
         public List<Yolcu> YolcuListesi()
         {
-            SqlDataReader dr = hlp.ExecuteReader("Select Ad,Soyad,Ucus_Numarasi from tblYolcular", null);
+            SqlDataReader dr = hlp.ExecuteReader("spYolcular", null);
             List<Yolcu> lst = new List<Yolcu>();
 
             while (dr.Read())
             {
-                lst.Add(new Yolcu { Ad = dr["Ad"].ToString(), Soyad = dr["Soyad"].ToString(), Ucus_Numarasi = dr["Ucus_Numarasi"].ToString() });
+                lst.Add(new Yolcu { Ad = dr["Ad"].ToString(), Soyad = dr["Soyad"].ToString(), Ucus_Numarasi = dr["Ucus_Numarasi"].ToString(), Koltuk_No = dr["Koltuk_No"].ToString() });
             }
             lst.Insert(0, new Yolcu { Ad = "Ad Seçiniz", Soyad = "Soyad Seçiniz", Ucus_Numarasi = "Ucus Numarasi Seçiniz" });
             dr.Close();
@@ -32,12 +32,12 @@ namespace UcusBilgileriApp.BLL
         {
             SqlParameter[] p = { new SqlParameter("@Ad", Ad), new SqlParameter("@Soyad", Soyad) };
             //SqlDataReader dr = hlp.ExecuteReader("Select Id_Havayolu,Id_Ucak,Adet from tblHavayoluEnvanter where Id_Havayolu=@Id_Havayolu", p);
-            SqlDataReader dr = hlp.ExecuteReader("Select Ad,Soyad,Ucus_Numarasi from tblYolcular where Ad=@Ad and Soyad=@Soyad ", p);
+            SqlDataReader dr = hlp.ExecuteReader("Select Ad,Soyad,Ucus_Numarasi,Koltuk_No from tblYolcular where Ad=@Ad and Soyad=@Soyad ", p);
             List<Yolcu> lst = new List<Yolcu>();
 
             while (dr.Read())
             {
-                lst.Add(new Yolcu { Ad = dr["Ad"].ToString(), Soyad = dr["Soyad"].ToString(), Ucus_Numarasi = dr["Ucus_Numarasi"].ToString() });
+                lst.Add(new Yolcu { Ad = dr["Ad"].ToString(), Soyad = dr["Soyad"].ToString(), Ucus_Numarasi = dr["Ucus_Numarasi"].ToString(), Koltuk_No = dr["Koltuk_No"].ToString() });
             }
            
             dr.Close();
@@ -49,9 +49,9 @@ namespace UcusBilgileriApp.BLL
         {
             try
             {
-                string cmdtext = "Insert into tblYolcular values(@Ad,@Soyad,@Ucus_Numarasi)";
+                string cmdtext = "Insert into tblYolcular values(@Ad,@Soyad,@Ucus_Numarasi,@Koltuk_No)";
 
-                SqlParameter[] p = { new SqlParameter("@Ad", y.Ad), new SqlParameter("@Soyad", y.Soyad), new SqlParameter("@Ucus_Numarasi", y.Ucus_Numarasi) };
+                SqlParameter[] p = { new SqlParameter("@Ad", y.Ad), new SqlParameter("@Soyad", y.Soyad), new SqlParameter("@Ucus_Numarasi", y.Ucus_Numarasi), new SqlParameter("@Koltuk_No", y.Koltuk_No) };
                 return hlp.ExecuteNonQuery(cmdtext, p) > 0;
             }
             catch (SqlException ex)
@@ -70,8 +70,8 @@ namespace UcusBilgileriApp.BLL
         {
             try
             {
-                SqlParameter[] p = { new SqlParameter("@Ad", y.Ad), new SqlParameter("@Soyad", y.Soyad), new SqlParameter("@Ucus_Numarasi", y.Ucus_Numarasi)};
-                return hlp.ExecuteNonQuery("Update tblYolcular set Ucus_Numarasi=@Ucus_Numarasi Where Ad=@Ad and Soyad=@Soyad", p) > 0;
+                SqlParameter[] p = { new SqlParameter("@Ad", y.Ad), new SqlParameter("@Soyad", y.Soyad), new SqlParameter("@Ucus_Numarasi", y.Ucus_Numarasi), new SqlParameter("@Koltuk_No", y.Koltuk_No) };
+                return hlp.ExecuteNonQuery("Update tblYolcular set Ucus_Numarasi=@Ucus_Numarasi , Koltuk_No=@Koltuk_No Where Ad=@Ad and Soyad=@Soyad", p) > 0;
             }
             catch (SqlException ex)
             {
@@ -89,7 +89,7 @@ namespace UcusBilgileriApp.BLL
             try
             {
                 SqlParameter[] p = { new SqlParameter("@Ad", Ad), new SqlParameter("@Soyad", Soyad) };
-                SqlDataReader dr = hlp.ExecuteReader("Select Ad,Soyad,Ucus_Numarasi from tblYolcular Where Ad=@Ad and Soyad=@Soyad ", p);
+                SqlDataReader dr = hlp.ExecuteReader("Select Ad,Soyad,Ucus_Numarasi,Koltuk_No from tblYolcular Where Ad=@Ad and Soyad=@Soyad ", p);
                 Yolcu y = null;
 
                 if (dr.Read())
@@ -98,6 +98,7 @@ namespace UcusBilgileriApp.BLL
                     y.Ad = dr["Ad"].ToString();
                     y.Soyad = dr["Soyad"].ToString();
                     y.Ucus_Numarasi = dr["Ucus_Numarasi"].ToString();
+                    y.Koltuk_No = dr["Koltuk_No"].ToString();
 
                 }
                 dr.Close();
@@ -126,7 +127,7 @@ namespace UcusBilgileriApp.BLL
             }
         }
 
-        public DataTable YolcuTable() => hlp.GetDataTable("Select * from tblYolcular");
+        public DataTable YolcuTable() => hlp.GetDataTable("spYolcular");
 
         public void Dispose()
         {

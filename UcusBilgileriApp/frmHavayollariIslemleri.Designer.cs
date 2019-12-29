@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHavayollariIslemleri));
             this.txtHavayoluID = new System.Windows.Forms.TextBox();
             this.txtHavayoluAdi = new System.Windows.Forms.TextBox();
             this.lblHavaalaniID = new System.Windows.Forms.Label();
@@ -119,6 +120,7 @@
             // 
             // pnlText
             // 
+            this.pnlText.BackColor = System.Drawing.Color.Transparent;
             this.pnlText.Controls.Add(this.txtHavayoluID);
             this.pnlText.Controls.Add(this.txtHavayoluAdi);
             this.pnlText.Location = new System.Drawing.Point(157, 67);
@@ -130,6 +132,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.pnlText);
             this.Controls.Add(this.btnSil);
